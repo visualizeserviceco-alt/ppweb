@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paps Productions | Photography</title>
+  <title>Paps Productions</title>
+  <meta name="description" content="Professional photography services — capturing moments and creating memories.">
+  <meta property="og:title" content="Paps Productions | Photography">
+  <meta property="og:description" content="Capturing moments, creating memories. Explore the portfolio of Paps Productions.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="../Styles/Style.css">
 </head>
 <body>
@@ -11,6 +15,7 @@
   <header>
     <nav>
       <div class="logo">Paps Productions</div>
+      <button class="menu-toggle" aria-label="Open Menu">☰</button>
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
@@ -22,46 +27,75 @@
 
   <!-- Hero Section -->
   <section id="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Capturing Moments, Creating Memories</h1>
       <p>Professional photography services for portraits, events, and creative projects.</p>
-      <a href="#portfolio" class="btn">View Portfolio</a>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn">View Portfolio</a>
+        <a href="#contact" class="btn secondary">Book a Session</a>
+      </div>
     </div>
   </section>
 
   <!-- Portfolio Section -->
   <section id="portfolio">
     <h2>Featured Work</h2>
+    <div class="portfolio-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="portraits">Portraits</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+      <button class="filter-btn" data-filter="creative">Creative</button>
+    </div>
     <div class="gallery">
-      <div class="gallery-item"><img src="images/photo1.jpg" alt="Sample Work 1"></div>
-      <div class="gallery-item"><img src="images/photo2.jpg" alt="Sample Work 2"></div>
-      <div class="gallery-item"><img src="images/photo3.jpg" alt="Sample Work 3"></div>
+      <div class="gallery-item" data-category="portraits"><img src="images/photo1.jpg" alt="Portrait Sample"></div>
+      <div class="gallery-item" data-category="events"><img src="images/photo2.jpg" alt="Event Sample"></div>
+      <div class="gallery-item" data-category="creative"><img src="images/photo3.jpg" alt="Creative Sample"></div>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I’m Paps — a passionate photographer dedicated to capturing real moments that tell stories. 
-      Whether it’s portraits, events, or creative shoots, I bring professionalism and creativity to every project.
-    </p>
+    <div class="about-wrapper">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          Hi, I’m Paps — a passionate photographer dedicated to capturing real moments that tell stories. 
+          Whether it’s portraits, events, or creative shoots, I bring professionalism and creativity to every project.
+        </p>
+      </div>
+      <div class="about-photo">
+        <img src="images/about.jpg" alt="Photographer at work">
+      </div>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <h2>Book a Session</h2>
-    <form action="#" method="POST">
+    <form action="/contact" method="POST" class="contact-form">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+      <div class="form-messages"></div>
       <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Paps Productions. All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; 2025 Paps Productions. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="/upload">Upload</a></li>
+      </ul>
+    </div>
   </footer>
+
+  <!-- Link JavaScript -->
+  <script src="../Scripts/Main.js"></script>
 </body>
 </html>
