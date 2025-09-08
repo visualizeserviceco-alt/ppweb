@@ -1,5 +1,3 @@
-
-
 // MAIN.JS
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -75,6 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   faders.forEach((el) => {
     appearOnScroll.observe(el);
+  });
+
+  /* =========================
+     Touch-friendly Gallery Effect
+  ========================= */
+  galleryItems.forEach((item) => {
+    item.addEventListener("touchstart", () => {
+      item.style.transform = "scale(0.97)";
+    });
+    item.addEventListener("touchend", () => {
+      item.style.transform = "scale(1)";
+    });
   });
 
   /* =========================

@@ -297,3 +297,45 @@ footer {
     gap: 0.75rem;
   }
 }
+
+/* Brand Color */
+:root {
+  --brand-color: #192951;
+}
+
+/* Update buttons to use brand color */
+.btn {
+  background: var(--brand-color);
+  color: #fff;
+}
+
+.btn:hover {
+  background: #0f1c3a; /* slightly darker on hover */
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--brand-color);
+}
+
+.btn.secondary:hover {
+  background: #e6e6e6;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 80px; /* increased size */
+  width: auto;
+  display: block;
+}
+
+/* Header alignment tweak */
+header nav {
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
