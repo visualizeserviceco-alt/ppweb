@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="../Styles/Style.css">
 </head>
 <body>
-      <div id="header-placeholder"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-      $(function(){
-        $("#header-placeholder").load("Backend/header.html");
-      });
-    </script>
+  <div id="header-placeholder"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $("#header-placeholder").load("Backend/header.html");
+    });
+  </script>
 
   <!-- Hero Section -->
   <section id="hero" style="background-image: url('../Storage/Smp/p1.jpg');">
@@ -27,7 +27,7 @@
       <h1>Capturing Moments, Creating Memories</h1>
       <p>Professional automotive photography services — showcasing cars with style and passion.</p>
       <div class="hero-buttons">
-        <a href="#portfolio" class="btn">View Portfolio</a>
+        <a href="#portfolio" class="btn" aria-label="View Portfolio">View Portfolio</a>
       </div>
     </div>
   </section>
@@ -36,19 +36,19 @@
   <section id="portfolio">
     <h2>Featured Work</h2>
     <div class="portfolio-grid">
-      <a href="portfolio-all.html" class="portfolio-block">
+      <a href="portfolio-all.html" class="portfolio-block" aria-label="View all portfolio work">
         <img src="../Storage/Smp/p2.jpeg" alt="All Work">
         <div class="overlay"><h3>All</h3></div>
       </a>
-      <a href="portfolio-portraits.html" class="portfolio-block">
+      <a href="portfolio-portraits.html" class="portfolio-block" aria-label="View portraits portfolio">
         <img src="../Storage/Smp/p3.jpeg" alt="Portraits">
         <div class="overlay"><h3>Portraits</h3></div>
       </a>
-      <a href="portfolio-events.html" class="portfolio-block">
+      <a href="portfolio-events.html" class="portfolio-block" aria-label="View events portfolio">
         <img src="../Storage/Smp/p2.jpeg" alt="Events">
         <div class="overlay"><h3>Events</h3></div>
       </a>
-      <a href="portfolio-creative.html" class="portfolio-block">
+      <a href="portfolio-creative.html" class="portfolio-block" aria-label="View creative portfolio">
         <img src="../Storage/Smp/p3.jpeg" alt="Creative">
         <div class="overlay"><h3>Creative</h3></div>
       </a>
@@ -71,7 +71,71 @@
     </div>
   </section>
 
-<div id="footer-placeholder"></div>
+  <!-- Packages Section -->
+  <section id="packages">
+    <h2>Choose Your Package</h2>
+    <div class="packages-grid">
+      <a href="booking.html?package=basic" class="package-block" aria-label="Book Basic package">
+        <h3>Basic</h3>
+        <p>Simple photo session for 1–2 cars, 30 minutes.</p>
+        <span class="price">$50</span>
+      </a>
+      <a href="booking.html?package=standard" class="package-block" aria-label="Book Standard package">
+        <h3>Standard</h3>
+        <p>Extended photo session for up to 4 cars, 1 hour.</p>
+        <span class="price">$100</span>
+      </a>
+      <a href="booking.html?package=premium" class="package-block" aria-label="Book Premium package">
+        <h3>Premium</h3>
+        <p>Full photo session with editing, up to 6 cars, 2 hours.</p>
+        <span class="price">$200</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-wrapper" role="list">
+      <div class="faq-item" role="listitem">
+        <h3>How long does a typical photoshoot last?</h3>
+        <p>Our standard sessions range from 30 minutes to 2 hours depending on the package you choose.</p>
+      </div>
+      <div class="faq-item" role="listitem">
+        <h3>Can I book multiple cars in one session?</h3>
+        <p>Yes, our Standard and Premium packages accommodate multiple vehicles.</p>
+      </div>
+      <div class="faq-item" role="listitem">
+        <h3>Do you offer editing and retouching?</h3>
+        <p>All our sessions include professional photo editing to ensure the best quality images.</p>
+      </div>
+      <div class="faq-item" role="listitem">
+        <h3>How do I schedule my session?</h3>
+        <p>You can select a package above and it will direct you to the booking page to reserve your time slot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews">
+    <h2>What Clients Say</h2>
+    <div class="reviews-grid" role="list">
+      <div class="review-item" role="listitem">
+        <p>"Michael captured my car perfectly. The shots were amazing and professional!"</p>
+        <span>- John D.</span>
+      </div>
+      <div class="review-item" role="listitem">
+        <p>"Highly recommend! The photoshoot was smooth and the results exceeded my expectations."</p>
+        <span>- Sarah L.</span>
+      </div>
+      <div class="review-item" role="listitem">
+        <p>"Excellent service and stunning automotive photography. Will book again."</p>
+        <span>- Alex P.</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
   <script>
     $(function(){
       $("#footer-placeholder").load("Backend/footer.html");
@@ -79,6 +143,6 @@
   </script>
 
   <!-- Link JavaScript -->
-  <script src="Java/Main.js"></script>
+  <script src="Java/main.js"></script>
 </body>
 </html>
