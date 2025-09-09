@@ -35,30 +35,23 @@
   <!-- Portfolio Section -->
   <section id="portfolio">
     <h2>Featured Work</h2>
-    <div class="portfolio-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="portraits">Portraits</button>
-      <button class="filter-btn" data-filter="events">Events</button>
-      <button class="filter-btn" data-filter="creative">Creative</button>
-    </div>
-    <div class="gallery-container">
-      <!-- Sliders -->
-      <div class="gallery-slider" id="all">
-        <img src="../Storage/Smp/p2.jpeg" alt="Car Photography Sample 1">
-        <img src="../Storage/Smp/p3.jpeg" alt="Car Photography Sample 2">
-      </div>
-      <div class="gallery-slider" id="portraits" style="display:none;">
-        <img src="../Storage/Smp/p2.jpeg" alt="Car Portrait 1">
-      </div>
-      <div class="gallery-slider" id="events" style="display:none;">
-        <img src="../Storage/Smp/p2.jpeg" alt="Car Event 1">
-      </div>
-      <div class="gallery-slider" id="creative" style="display:none;">
-        <img src="../Storage/Smp/p3.jpeg" alt="Creative Car Shot 1">
-      </div>
-      <!-- Navigation -->
-      <button class="slider-prev">&#10094;</button>
-      <button class="slider-next">&#10095;</button>
+    <div class="portfolio-grid">
+      <a href="portfolio-all.html" class="portfolio-block">
+        <img src="../Storage/Smp/p2.jpeg" alt="All Work">
+        <div class="overlay"><h3>All</h3></div>
+      </a>
+      <a href="portfolio-portraits.html" class="portfolio-block">
+        <img src="../Storage/Smp/p3.jpeg" alt="Portraits">
+        <div class="overlay"><h3>Portraits</h3></div>
+      </a>
+      <a href="portfolio-events.html" class="portfolio-block">
+        <img src="../Storage/Smp/p2.jpeg" alt="Events">
+        <div class="overlay"><h3>Events</h3></div>
+      </a>
+      <a href="portfolio-creative.html" class="portfolio-block">
+        <img src="../Storage/Smp/p3.jpeg" alt="Creative">
+        <div class="overlay"><h3>Creative</h3></div>
+      </a>
     </div>
   </section>
 
