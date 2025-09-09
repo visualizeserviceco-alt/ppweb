@@ -152,13 +152,14 @@ nav {
   border: none;
   border-radius: 5px;
   background: #f0f0f0;
+  color: #192951;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: #f39c12;
+  background: var(--brand-color);
   color: #fff;
 }
 
