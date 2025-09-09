@@ -44,6 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
   function populateSlider(category) {
     const slider = sliders[category];
+    // If slider already has images in HTML, do not overwrite
+    if (slider.querySelectorAll('img').length > 0) {
+      currentIndex = 0;
+      showSlide(currentIndex, category);
+      return;
+    }
+
     slider.innerHTML = '';
     let imgArray = [];
 

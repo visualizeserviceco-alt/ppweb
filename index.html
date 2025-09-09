@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paps Productions</title>
   <link rel="icon" type="image/svg+xml" href="../Storage/Logo2.svg">
-  <meta name="description" content="Professional photography services — capturing moments and creating memories.">
+  <meta name="description" content="Professional automotive photography — capturing cars with style and precision.">
   <meta property="og:title" content="Paps Productions | Photography">
-  <meta property="og:description" content="Capturing moments, creating memories. Explore the portfolio of Paps Productions.">
+  <meta property="og:description" content="Capturing cars with precision and creativity. Explore the automotive portfolio of Paps Productions.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../Styles/Style.css">
 </head>
@@ -25,7 +25,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Capturing Moments, Creating Memories</h1>
-      <p>Professional photography services for portraits, events, and creative projects.</p>
+      <p>Professional automotive photography services — showcasing cars with style and passion.</p>
       <div class="hero-buttons">
         <a href="#portfolio" class="btn">View Portfolio</a>
       </div>
@@ -43,10 +43,19 @@
     </div>
     <div class="gallery-container">
       <!-- Sliders -->
-      <div class="gallery-slider" id="all"></div>
-      <div class="gallery-slider" id="portraits" style="display:none;"></div>
-      <div class="gallery-slider" id="events" style="display:none;"></div>
-      <div class="gallery-slider" id="creative" style="display:none;"></div>
+      <div class="gallery-slider" id="all">
+        <img src="../Storage/Smp/p2.jpeg" alt="Car Photography Sample 1">
+        <img src="../Storage/Smp/p3.jpeg" alt="Car Photography Sample 2">
+      </div>
+      <div class="gallery-slider" id="portraits" style="display:none;">
+        <img src="../Storage/Smp/p2.jpeg" alt="Car Portrait 1">
+      </div>
+      <div class="gallery-slider" id="events" style="display:none;">
+        <img src="../Storage/Smp/p2.jpeg" alt="Car Event 1">
+      </div>
+      <div class="gallery-slider" id="creative" style="display:none;">
+        <img src="../Storage/Smp/p3.jpeg" alt="Creative Car Shot 1">
+      </div>
       <!-- Navigation -->
       <button class="slider-prev">&#10094;</button>
       <button class="slider-next">&#10095;</button>
@@ -59,8 +68,8 @@
       <div class="about-text">
         <h2>About Me</h2>
         <p>
-          Hi, I’m Michael a passionate photographer dedicated to capturing real moments that tell stories. 
-          Whether it’s portraits, events, or creative shoots, I bring professionalism and creativity to every project.
+          Hi, I’m Michael, a passionate photographer dedicated to capturing the beauty of cars. 
+          From sleek portraits of individual vehicles to dynamic event coverage, I bring professionalism and creativity to every automotive project.
         </p>
       </div>
       <div class="about-photo">
@@ -69,9 +78,7 @@
     </div>
   </section>
 
-</section>
-
-  <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
   <script>
     $(function(){
       $("#footer-placeholder").load("Backend/footer.html");
@@ -79,6 +86,6 @@
   </script>
 
   <!-- Link JavaScript -->
-  <script src="../Scripts/Main.js"></script>
+  <script src="Java/Main.js"></script>
 </body>
 </html>
