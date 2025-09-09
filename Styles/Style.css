@@ -7,6 +7,10 @@
   scroll-behavior: smooth;
 }
 
+button, .btn, input, textarea, .gallery-item img, .about-photo img, .hero-content {
+  border-radius: 12px;
+}
+
 body {
   line-height: 1.6;
   background-color: #f9f9f9;
@@ -86,7 +90,8 @@ nav {
   max-width: 700px;
   padding: 2rem;
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   z-index: 2;
   animation: fadeInUp 1s ease forwards;
 }
@@ -109,25 +114,27 @@ nav {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: #f39c12;
+  background: var(--brand-color);
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background: #d35400;
-  transform: translateY(-2px);
+  background: #0f1c3a; /* slightly darker on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
 }
 
 .btn.secondary {
   background: #fff;
-  color: #111;
+  color: var(--brand-color);
 }
 
 .btn.secondary:hover {
-  background: #f0f0f0;
+  background: #e6e6e6;
 }
 
 /* Portfolio Section */
@@ -150,11 +157,12 @@ nav {
   padding: 0.5rem 1rem;
   margin: 0 0.25rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   background: #f0f0f0;
   color: #192951;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .filter-btn:hover,
@@ -171,18 +179,20 @@ nav {
 
 .gallery-item {
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .gallery-item img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item img:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* About Section */
@@ -210,7 +220,7 @@ nav {
 
 .about-photo img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
@@ -302,26 +312,6 @@ footer {
 /* Brand Color */
 :root {
   --brand-color: #192951;
-}
-
-/* Update buttons to use brand color */
-.btn {
-  background: var(--brand-color);
-  color: #fff;
-}
-
-.btn:hover {
-  background: #0f1c3a; /* slightly darker on hover */
-  transform: translateY(-2px);
-}
-
-.btn.secondary {
-  background: #fff;
-  color: var(--brand-color);
-}
-
-.btn.secondary:hover {
-  background: #e6e6e6;
 }
 
 /* Logo Styling */
