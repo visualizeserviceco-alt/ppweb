@@ -1,0 +1,118 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1b1b1c;
+      color: #fff;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    section#faq {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #192951;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    #faq h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1b1b1c;
+      border: 1px solid #fff;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      text-align: left;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: '-';
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 1rem;
+      background: #192951;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question">How long does a typical photoshoot last?</button>
+      <div class="faq-answer">
+        <p>Our standard sessions range from 30 minutes to 2 hours depending on the package you choose.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I book multiple cars in one session?</button>
+      <div class="faq-answer">
+        <p>Yes, our Standard and Premium packages accommodate multiple vehicles.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do you offer editing and retouching?</button>
+      <div class="faq-answer">
+        <p>All our sessions include professional photo editing to ensure the best quality images.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How do I schedule my session?</button>
+      <div class="faq-answer">
+        <p>You can select a package above and it will direct you to the booking page to reserve your time slot.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

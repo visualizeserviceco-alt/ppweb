@@ -185,10 +185,12 @@ nav {
 }
 
 /* Portfolio Section */
+/* Portfolio Section */
 #portfolio {
   padding: 4rem 2rem;
   background: #1b1b1c;
   text-align: center;
+  border-radius: 12px;
 }
 
 .portfolio-grid {
@@ -197,6 +199,20 @@ nav {
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  background: #192951;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 3px solid #fff; /* white outline around blue background */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Instructional text under portfolio */
+.portfolio-instructions {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6); /* faint grey/white */
+  font-style: italic;
+  text-align: center;
 }
 
 .portfolio-block {
@@ -210,12 +226,28 @@ nav {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .portfolio-block img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   border-radius: 12px;
+}
+
+/* Portfolio Image Wrapper for borders */
+.portfolio-image-wrapper {
+  border: 3px solid #fff; /* white border */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.portfolio-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .portfolio-block .overlay {
@@ -487,62 +519,6 @@ header .logo {
   }
 }
 
-/* FAQ Section */
-#faq {
-  padding: 4rem 2rem;
-  background: #192951;
-  text-align: center;
-}
-
-#faq h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: var(--brand-color);
-  color: #fff;
-  border-radius: 12px;
-}
-
-.faq-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.faq-item h3 {
-  font-size: 1.25rem;
-  color: #fff;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  text-align: left;
-  transition: color 0.3s ease;
-}
-
-.faq-item h3:hover {
-  color: #0f1c3a;
-}
-
-.faq-item p {
-  font-size: 1rem;
-  color: #fff;
-  line-height: 1.6;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  background: #192951;
-  padding: 0 1rem;
-  border-radius: 12px;
-  margin-top: 0.5rem;
-}
-
-.faq-item.active p {
-  max-height: 500px; /* large enough to show content */
-  padding: 1rem;
-}
-
 /* Reviews Section */
 #reviews {
   padding: 4rem 2rem;
@@ -589,9 +565,5 @@ header .logo {
 @media (max-width: 1024px) {
   .reviews-grid {
     grid-template-columns: 1fr;
-  }
-
-  .faq-wrapper {
-    gap: 1rem;
   }
 }

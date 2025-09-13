@@ -46,23 +46,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   faders.forEach(el => appearOnScroll.observe(el));
   
-  /* =========================
-     FAQ Accordion Dropdown
-  ========================= */
-  const faqItems = document.querySelectorAll("#faq .faq-item h3");
-
-  faqItems.forEach(header => {
-    header.addEventListener("click", () => {
-      const parent = header.parentElement;
-      const isActive = parent.classList.contains("active");
-
-      // Close all FAQ items
-      faqItems.forEach(h => h.parentElement.classList.remove("active"));
-
-      // Toggle current FAQ
-      if (!isActive) {
-        parent.classList.add("active");
-      }
-    });
-  });
 });
