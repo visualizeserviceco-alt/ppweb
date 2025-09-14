@@ -1,9 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevent horizontal scrollbars */
+  background: #1b1b1c;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+  color: #fff;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  width: 100%;
+  margin: 0;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
 /* Social Media Section */
 #social-media {
   padding: 4rem 2rem;
   background: #1b1b1c;
   text-align: center;
-  border-top: 2px solid #fff;
 }
 
 #social-media h2 {
@@ -50,9 +82,15 @@
   color: #fff;
   transform: translateY(-3px);
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Fix layout issue where sections appear side by side */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: block !important;
 }
@@ -63,10 +101,23 @@ main, .page-wrapper, .container {
 }
 
 section {
-  display: block;
   width: 100%;
+  max-width: 100%;
   margin: 0 auto 4rem auto; /* spacing between sections */
   clear: both;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Ensure containers expand properly */
+.about-wrapper,
+.portfolio-grid,
+.packages-grid,
+.reviews-grid,
+.social-links {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Global Styles */
@@ -122,10 +173,13 @@ section h2 {
 
 /* Navigation */
 header {
-  background: #111;
+  width: 100%;
+  margin: 0;
   padding: 1rem 2rem;
+  background: #111;
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
@@ -169,6 +223,7 @@ nav {
 
 /* Hero Section */
 #hero {
+  width: 100%;
   height: 100vh;
   background: url('../images/hero-bg.jpg') no-repeat center center/cover;
   display: flex;
@@ -446,6 +501,8 @@ nav {
 
 /* Footer */
 footer {
+  width: 100%;
+  margin: 0;
   padding: 2rem;
   background: #111;
   color: #fff;
