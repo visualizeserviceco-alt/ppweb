@@ -100,6 +100,16 @@
       display: flex;
     }
   }
+  .nav-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+    max-height: 500px; /* enough to show all items */
+  }
 </style>
 <header>
   <nav>
@@ -117,4 +127,14 @@
 
     </ul>
   </nav>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
 </header>
