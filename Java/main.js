@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if(target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-      
-      if(navLinks.classList.contains("active")) {
+      // Only close menu on mobile (when menu-toggle is visible)
+      if (window.innerWidth <= 768 && navLinks.classList.contains("active")) {
         navLinks.classList.remove("active");
         menuToggle.setAttribute("aria-expanded", "false");
       }
