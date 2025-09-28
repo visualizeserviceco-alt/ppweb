@@ -1,3 +1,111 @@
+<style>
+  header {
+    background: #111;
+    padding: 1rem 2rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    height: 200px;
+    width: auto;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-links li a:hover {
+    color: #ccc;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .footer-logo-img {
+    height: 90px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .footer-links li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+  }
+
+  .footer-links li a:hover {
+    color: #ccc;
+  }
+
+  @media (max-width: 768px) {
+    .logo img {
+      height: 160px;
+    }
+
+    .footer-logo-img {
+      height: 120px;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      background: #111;
+      margin-top: 0.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0;
+    }
+
+    .nav-links.active {
+      max-height: 500px;
+      padding: 1rem 0;
+    }
+  }
+</style>
 <header>
   <nav>
     <div class="logo">
@@ -13,3 +121,4 @@
     </ul>
   </nav>
 </header>
+<script src="../Java/Main.js"></script>
