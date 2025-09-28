@@ -111,7 +111,7 @@
     <div class="logo">
       <img src="Storage/Logo.svg" alt="Paps Productions Logo">
     </div>
-    <button class="menu-toggle" aria-label="Open Menu">☰</button>
+    <button class="menu-toggle" aria-label="Open Menu" aria-expanded="false">☰</button>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
@@ -127,9 +127,15 @@
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+
+        // Update aria-expanded for accessibility
+        const expanded = menuToggle.getAttribute("aria-expanded") === "true" || false;
+        menuToggle.setAttribute("aria-expanded", !expanded);
+      });
+    }
   });
 </script>
 </header>
