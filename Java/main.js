@@ -6,17 +6,24 @@ window.initHeaderMenu = function() {
   ========================= */
   const header = document.querySelector("header");
   let lastScroll = 0;
+  let ticking = false;
   window.addEventListener("scroll", () => {
     if (!header) return;
-    const curr = window.scrollY;
-    if (curr > 60) {
-      header.classList.add("scrolled");
-      if (curr > lastScroll) header.classList.add("hide");
-      else header.classList.remove("hide");
-    } else {
-      header.classList.remove("scrolled", "hide");
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const curr = window.scrollY;
+        if (curr > 60) {
+          header.classList.add("scrolled");
+          if (curr > lastScroll) header.classList.add("hide");
+          else header.classList.remove("hide");
+        } else {
+          header.classList.remove("scrolled", "hide");
+        }
+        lastScroll = curr;
+        ticking = false;
+      });
+      ticking = true;
     }
-    lastScroll = curr;
   });
 
   /* =========================
@@ -110,14 +117,14 @@ window.initHeaderMenu = function() {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.style.opacity = 1;
-      entry.target.style.transform = "translateY(0)";
+      entry.target.style.transform = "translateY(0) scale(1)";
       observer.unobserve(entry.target);
     });
   }, fadeInOptions);
 
   sections.forEach(section => {
     section.style.opacity = 0;
-    section.style.transform = "translateY(40px)";
+    section.style.transform = "translateY(40px) scale(0.98)";
     fadeInOnScroll.observe(section);
   });
 };
