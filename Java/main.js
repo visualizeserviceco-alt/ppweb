@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuToggle.addEventListener("click", () => {
     navLinks.classList.toggle("active");
+        const expanded = navLinks.classList.contains("active");
+        menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
   });
 
   /* =========================
@@ -22,8 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if(target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
+      
       if(navLinks.classList.contains("active")) {
         navLinks.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
       }
     });
   });
