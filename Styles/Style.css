@@ -158,36 +158,133 @@ nav {
 /* Responsive Navigation */
 @media (max-width: 900px) {
   nav {
-    padding: 1rem 1rem;
+    padding: 0.7rem 0.5rem;
   }
   .nav-links {
-    gap: 1.2rem;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 768px) {
+  header {
+    padding: 0;
+  }
+  nav {
+    padding: 0.5rem 0.5rem;
+    min-height: 60px;
+  }
+  .logo img {
+    height: 48px;
+  }
+  .menu-toggle {
+    font-size: 2.5rem;
+    padding: 0.3em 0.7em;
+    margin-left: 0.5rem;
+  }
   .nav-links {
     position: absolute;
     top: 100%;
     right: 0;
+    left: 0;
+    width: 100vw;
     background: rgba(17,17,17,0.98);
     flex-direction: column;
-    align-items: flex-end;
-    width: 220px;
+    align-items: stretch;
     max-height: 0;
     overflow: hidden;
-    border-radius: 0 0 0 18px;
+    border-radius: 0 0 18px 18px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    transition: max-height 0.4s cubic-bezier(.4,0,.2,1);
+    transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
     z-index: 1001;
     padding: 0;
   }
   .nav-links.active {
     max-height: 400px;
-    padding: 1rem 0;
+    padding: 0.7rem 0 0.7rem 0;
   }
-  .menu-toggle {
+  .nav-links li {
+    width: 100%;
+    text-align: left;
+  }
+  .nav-links li a {
     display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.15rem;
+    border-radius: 0;
+    border-bottom: 1px solid #222;
+    background: none;
+    color: var(--white);
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+  .nav-links li a:hover, .nav-links li a:focus {
+    background: var(--brand-blue);
+    color: #fff;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content {
+    padding: 1.2rem 0.5rem;
+    border-radius: 14px;
+  }
+  .hero-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .hero-content p {
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.9rem 0;
+    border-radius: 10px;
+  }
+  section {
+    padding: 0.8rem 0.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+    max-width: 100vw;
+  }
+  .about-photo {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .about-photo img {
+    width: 90px;
+    height: 90px;
+    max-width: 60vw;
+    max-height: 60vw;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+  }
+  .portfolio-block img {
+    height: 90px;
+  }
+  .package-block,
+  .review-item {
+    padding: 1.2rem 0.7rem;
+    border-radius: 10px;
+    min-width: unset;
+    max-width: 100vw;
+  }
+  .portfolio-block {
+    border-radius: 10px;
+  }
+  .portfolio-block .overlay {
+    border-radius: 10px;
   }
 }
 
@@ -298,16 +395,22 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .about-photo img {
   width: 320px;
   height: 320px;
+  max-width: 90vw;
+  max-height: 60vw;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 6px 24px #3a5aff33;
   border: 4px solid var(--brand-blue);
   background: #111;
+  transition: width 0.3s, height 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  display: block;
 }
 
 .about-text {
@@ -341,6 +444,26 @@ nav {
   .about-photo img {
     width: 220px;
     height: 220px;
+    max-width: 80vw;
+    max-height: 60vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-photo {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .about-photo img {
+    width: 90px;
+    height: 90px;
+    max-width: 60vw;
+    max-height: 60vw;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
   }
 }
 
@@ -649,6 +772,8 @@ nav {
   .about-photo img {
     width: 220px;
     height: 220px;
+    max-width: 80vw;
+    max-height: 60vw;
   }
   .portfolio-grid, .packages-grid, .reviews-grid {
     display: flex;
@@ -674,28 +799,64 @@ nav {
 }
 
 @media (max-width: 600px) {
-  .hero-content h1 {
-    font-size: 2rem;
+  .hero-content {
+    padding: 1.2rem 0.5rem;
+    border-radius: 14px;
   }
-  .about-photo img {
-    width: 120px;
-    height: 120px;
+  .hero-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .hero-content p {
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.9rem 0;
+    border-radius: 10px;
   }
   section {
-    padding: 1.2rem 0.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
+    padding: 0.8rem 0.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
     max-width: 100vw;
   }
-  #hero {
-    border-radius: 0 0 16px 16px;
-    min-height: 90vh;
-    height: 90vh;
-    padding: 0;
+  .about-photo {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .about-photo img {
+    width: 90px;
+    height: 90px;
+    max-width: 60vw;
+    max-height: 60vw;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+  }
+  .portfolio-block img {
+    height: 90px;
+  }
+  .package-block,
+  .review-item {
+    padding: 1.2rem 0.7rem;
+    border-radius: 10px;
+    min-width: unset;
     max-width: 100vw;
   }
-  .hero-content {
-    padding: 1.5rem 0.5rem;
+  .portfolio-block {
+    border-radius: 10px;
+  }
+  .portfolio-block .overlay {
+    border-radius: 10px;
   }
 }
 
