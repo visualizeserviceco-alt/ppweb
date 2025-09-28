@@ -15,118 +15,139 @@
   <link rel="stylesheet" href="Styles/Style.css">
 </head>
 <body>
+  <!-- Header -->
   <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" style="background-image: url('Storage/Photos/IMG1.JPG');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Capturing Moments, Creating Memories</h1>
+        <p>Professional automotive photography services showcasing cars with style and passion.</p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn" aria-label="View Portfolio">View Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="about-wrapper">
+        <div class="about-photo">
+          <img src="Storage/Photos/IMG6.JPG" alt="Photographer at work">
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            Hi, I’m Michael, a demonstrative photographer dedicated to capturing the beauty of cars. Although I specialize in automotive photography, my passion extends to all things visual. From sleek portraits of individual vehicles to dynamic event coverage, I bring professionalism and creativity to every automotive project.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <h2>Featured Work</h2>
+      <p class="portfolio-instructions">
+        Click on any image to view the full portfolio with all shoot days.
+      </p>
+      <div class="portfolio-grid">
+        <a href="portfolio-all.html" class="portfolio-block" aria-label="View all portfolio work">
+          <img src="Storage/Photos/IMG2.JPG" alt="All Work">
+          <div class="overlay"><h3>7/8/25</h3></div>
+        </a>
+        <a href="portfolio-portraits.html" class="portfolio-block" aria-label="View portraits portfolio">
+          <img src="Storage/Photos/IMG3.JPG" alt="Portraits">
+          <div class="overlay"><h3>7/8/25</h3></div>
+        </a>
+        <a href="portfolio-events.html" class="portfolio-block" aria-label="View events portfolio">
+          <img src="Storage/Photos/IMG4.JPG" alt="Events">
+          <div class="overlay"><h3>7/8/25</h3></div>
+        </a>
+        <a href="portfolio-creative.html" class="portfolio-block" aria-label="View creative portfolio">
+          <img src="Storage/Photos/IMG5.JPG" alt="Creative">
+          <div class="overlay"><h3>7/8/25</h3></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Packages Section (optional, if exists) -->
+    <section id="packages">
+      <h2>Packages</h2>
+      <div class="packages-grid">
+        <!-- Example package blocks, replace with real content -->
+        <div class="package-block">
+          <h3>Basic</h3>
+          <p>Perfect for quick shoots and social media content.</p>
+          <div class="price">$99</div>
+        </div>
+        <div class="package-block">
+          <h3>Standard</h3>
+          <p>Ideal for car owners who want a full set of professional photos.</p>
+          <div class="price">$199</div>
+        </div>
+        <div class="package-block">
+          <h3>Premium</h3>
+          <p>Comprehensive coverage for events or commercial needs.</p>
+          <div class="price">$349</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+      <h2>What Clients Say</h2>
+      <div class="reviews-grid" role="list">
+        <div class="review-item" role="listitem">
+          <p>"Michael captured my car perfectly. The shots were amazing and professional!"</p>
+          <span>- John D.</span>
+        </div>
+        <div class="review-item" role="listitem">
+          <p>"Highly recommend! The photoshoot was smooth and the results exceeded my expectations."</p>
+          <span>- Sarah L.</span>
+        </div>
+        <div class="review-item" role="listitem">
+          <p>"Excellent service and stunning automotive photography. Will book again."</p>
+          <span>- Alex P.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (loaded externally) -->
+    <section id="faq-section">
+      <div id="faq-placeholder"></div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social-media">
+      <h2>Connect With Us</h2>
+      <p>Visit our social media to see more of our work and stay updated:</p>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit us on Instagram">
+          <img src="Storage/instagram.svg" alt="Instagram Logo">
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/share/1BNGTnpdEL/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Visit us on Facebook">
+          <img src="Storage/facebook.svg" alt="Facebook Logo">
+          Facebook
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
     $(function(){
       $("#header-placeholder").load("Backend/header.html");
-    });
-  </script>
-
-  <!-- Hero Section -->
-  <section id="hero" style="background-image: url('Storage/Photos/IMG1.JPG');">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Capturing Moments, Creating Memories</h1>
-      <p>Professional automotive photography services showcasing cars with style and passion.</p>
-      <div class="hero-buttons">
-        <a href="#portfolio" class="btn" aria-label="View Portfolio">View Portfolio</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <div class="about-wrapper">
-      <div class="about-text">
-        <h2>About Me</h2>
-        <p>
-          Hi, I’m Michael, a demonstrative photographer dedicated to capturing the beauty of cars. Although i specialize in automotive
-          From sleek portraits of individual vehicles to dynamic event coverage, I bring professionalism and creativity to every automotive project.
-        </p>
-      </div>
-      <div class="about-photo">
-        <img src="Storage/Photos/IMG6.JPG" alt="Photographer at work">
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio">
-    <h2>Featured Work</h2>
-    <p class="portfolio-instructions">
-      Click on any image to view the full portfolio with all shoot days.
-    </p>
-    <div class="portfolio-grid">
-      <a href="portfolio-all.html" class="portfolio-block" aria-label="View all portfolio work">
-        <img src="Storage/Photos/IMG2.JPG" alt="All Work">
-        <div class="overlay"><h3>7/8/25</h3></div>
-      </a>
-      <a href="portfolio-portraits.html" class="portfolio-block" aria-label="View portraits portfolio">
-        <img src="Storage/Photos/IMG3.JPG" alt="Portraits">
-        <div class="overlay"><h3>7/8/25</h3></div>
-      </a>
-      <a href="portfolio-events.html" class="portfolio-block" aria-label="View events portfolio">
-        <img src="Storage/Photos/IMG4.JPG" alt="Events">
-        <div class="overlay"><h3>7/8/25</h3></div>
-      </a>
-      <a href="portfolio-creative.html" class="portfolio-block" aria-label="View creative portfolio">
-        <img src="Storage/Photos/IMG5.JPG" alt="Creative">
-        <div class="overlay"><h3>7/8/25</h3></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- FAQ Section (loaded externally) -->
-  <div id="faq-placeholder"></div>
-  <script>
-    $(function(){
       $("#faq-placeholder").load("faq.html");
-    });
-  </script>
-
-  <!-- Reviews Section -->
-  <section id="reviews">
-    <h2>What Clients Say</h2>
-    <div class="reviews-grid" role="list">
-      <div class="review-item" role="listitem">
-        <p>"Michael captured my car perfectly. The shots were amazing and professional!"</p>
-        <span>- John D.</span>
-      </div>
-      <div class="review-item" role="listitem">
-        <p>"Highly recommend! The photoshoot was smooth and the results exceeded my expectations."</p>
-        <span>- Sarah L.</span>
-      </div>
-      <div class="review-item" role="listitem">
-        <p>"Excellent service and stunning automotive photography. Will book again."</p>
-        <span>- Alex P.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Media Section -->
-  <section id="social-media">
-    <h2>Connect With Us</h2>
-    <p>Visit our social media to see more of our work and stay updated:</p>
-    <div class="social-links">
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit us on Instagram">
-        <img src="Storage/instagram.svg" alt="Instagram Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
-        Instagram
-      </a>
-      <a href="https://www.facebook.com/share/1BNGTnpdEL/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Visit us on Facebook">
-        <img src="Storage/facebook.svg" alt="Facebook Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
-        Facebook
-      </a>
-    </div>
-  </section>
-  <div id="footer-placeholder"></div>
-  <script>
-    $(function(){
       $("#footer-placeholder").load("Backend/footer.html");
     });
   </script>
-
-  <!-- Link JavaScript -->
   <script src="Java/main.js"></script>
 </body>
 </html>
