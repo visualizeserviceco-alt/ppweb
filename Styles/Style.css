@@ -26,9 +26,11 @@ main {
 
 section {
   width: 100%;
-  margin: 0;
-  padding: 4rem 2rem;
-  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto 4rem auto; /* spacing between sections */
+  clear: both;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Social Media Section */
@@ -115,9 +117,9 @@ section {
 .packages-grid,
 .reviews-grid,
 .social-links {
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* Global Styles */
@@ -225,7 +227,7 @@ nav {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+  background: url('Storage/Photos/IMG1.JPG') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,7 +326,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   background: #192951;
   padding: 2rem;
@@ -439,8 +441,9 @@ nav {
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {
@@ -516,6 +519,9 @@ footer {
   justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 }
 
 .social-links a {
@@ -614,7 +620,7 @@ header .logo {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -685,7 +691,7 @@ header .logo {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
