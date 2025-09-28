@@ -1,6 +1,6 @@
 // MAIN.JS
 
-document.addEventListener("DOMContentLoaded", () => {
+window.initHeaderMenu = function() {
   /* =========================
      Sticky Header Animation
   ========================= */
@@ -120,4 +120,9 @@ document.addEventListener("DOMContentLoaded", () => {
     section.style.transform = "translateY(40px)";
     fadeInOnScroll.observe(section);
   });
-});
+};
+
+// If header is already present (not loaded via AJAX), run immediately
+if (document.querySelector("header")) {
+  window.initHeaderMenu();
+}

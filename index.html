@@ -143,7 +143,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
     $(function(){
-      $("#header-placeholder").load("Backend/header.html");
+      $("#header-placeholder").load("Backend/header.html", function() {
+        // Ensure menu JS runs after header is loaded
+        if (window.initHeaderMenu) window.initHeaderMenu();
+      });
       $("#faq-placeholder").load("faq.html");
       $("#footer-placeholder").load("Backend/footer.html");
     });
