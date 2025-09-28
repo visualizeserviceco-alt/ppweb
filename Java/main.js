@@ -7,11 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-        const expanded = navLinks.classList.contains("active");
-        menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
+  if (menuToggle && navLinks) {
+    // Toggle on click
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      const expanded = navLinks.classList.contains("active");
+      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    // Toggle on Enter/Space for accessibility
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+  }
 
   /* =========================
      Smooth Scroll for Links
