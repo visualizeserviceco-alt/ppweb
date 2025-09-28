@@ -122,20 +122,5 @@
 
     </ul>
   </nav>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-
-        // Update aria-expanded for accessibility
-        const expanded = menuToggle.getAttribute("aria-expanded") === "true" || false;
-        menuToggle.setAttribute("aria-expanded", !expanded);
-      });
-    }
-  });
-</script>
+<script src="main.js"></script>
 </header>
