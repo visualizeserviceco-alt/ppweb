@@ -19,6 +19,7 @@
   .nav-links {
     list-style: none;
     display: flex;
+    flex-direction: row;
     gap: 1.5rem;
   }
 
@@ -89,16 +90,19 @@
 
     .nav-links {
       flex-direction: column;
+      align-items: flex-start;
       width: 100%;
       background: #111;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease;
+      padding: 0;
     }
 
     .nav-links.active {
       max-height: 500px;
+      padding: 1rem 0;
     }
   }
 </style>
