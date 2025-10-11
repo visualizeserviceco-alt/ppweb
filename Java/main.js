@@ -141,7 +141,17 @@ window.initFAQ = function() {
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
       const faqItem = button.parentElement;
-      faqItem.classList.toggle('active');
+      const expanded = !faqItem.classList.contains('active');
+      // Collapse all others for single-open UX
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          const btn = item.querySelector('.faq-question');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      faqItem.classList.toggle('active', expanded);
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     });
   });
 };

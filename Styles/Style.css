@@ -203,7 +203,7 @@ body {
 .section-title {
   font-family: 'Playfair Display', 'Montserrat', 'Poppins', sans-serif;
   font-size: 2.6rem;
-  color: var(--brand-blue);
+  color: #fff;
   text-align: center;
   margin: 3rem 0 2rem 0;
   letter-spacing: 0.04em;
@@ -485,15 +485,14 @@ body {
   box-shadow: var(--shadow);
   border: 1.5px solid rgba(58,90,255,0.13);
   overflow: hidden;
-  transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
+  transition: box-shadow 0.3s, border 0.3s, transform 0.3s, opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  opacity: 1;
+  transform: none;
   will-change: opacity, transform;
 }
 .faq-item.faq-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
 }
 .faq-item:hover, .faq-item:focus-within {
   box-shadow: 0 8px 32px #3a5aff44;

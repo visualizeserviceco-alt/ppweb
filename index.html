@@ -12,27 +12,23 @@
   <link rel="stylesheet" href="Styles/Style.css">
 </head>
 <body>
-  <!-- Header -->
   <header class="main-header transparent-blur" role="banner">
     <nav class="main-nav" aria-label="Main Navigation">
-      <div class="logo-center">
-        <a href="/" aria-label="Paps Productions Home">
-          <img src="Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
-        </a>
-      </div>
-      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="#hero" class="nav-link">Home</a></li>
-        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-        <li><a href="#bts" class="nav-link">Behind the Lens</a></li>
-        <li><a href="#booking" class="nav-link">Bookings</a></li>
-        <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+      <a href="/" class="logo-center" aria-label="Paps Productions Home">
+        <img src="Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">&#9776;</button>
+      <ul class="nav-links" id="main-menu" role="menubar">
+        <li role="none"><a href="#hero" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+        <li role="none"><a href="#bts" class="nav-link" role="menuitem">Behind the Lens</a></li>
+        <li role="none"><a href="#booking" class="nav-link" role="menuitem">Bookings</a></li>
+        <li role="none"><a href="#faq-section" class="nav-link" role="menuitem">FAQ</a></li>
       </ul>
     </nav>
   </header>
 
-  <main id="main-content" role="main" tabindex="-1">
-    <!-- Hero Section -->
+  <main id="main-content" tabindex="-1">
     <section id="hero" class="hero-fullscreen" aria-label="Hero" style="background-image: url('Storage/Photos/IMG1.JPG');">
       <div class="hero-overlay"></div>
       <div class="hero-content minimal">
@@ -41,11 +37,9 @@
       </div>
     </section>
 
-    <!-- Portfolio Gallery -->
     <section id="portfolio" class="gallery-section" aria-label="Portfolio">
       <h2 class="section-title">Portfolio</h2>
       <div class="gallery-grid">
-        <!-- Example images, replace src with your own -->
         <figure class="gallery-item">
           <img src="Storage/Photos/IMG2.JPG" alt="BMW M3 rolling shot" loading="lazy" />
           <figcaption class="gallery-caption">BMW M3 | Rolling Shot</figcaption>
@@ -62,11 +56,9 @@
           <img src="Storage/Photos/IMG5.JPG" alt="Lamborghini Aventador studio" loading="lazy" />
           <figcaption class="gallery-caption">Lamborghini Aventador | Studio</figcaption>
         </figure>
-        <!-- Add more images as needed -->
       </div>
     </section>
 
-    <!-- Behind the Lens (BTS) Section -->
     <section id="bts" class="bts-section" aria-label="Behind the Lens">
       <h2 class="section-title">Behind the Lens</h2>
       <div class="bts-grid">
@@ -78,11 +70,9 @@
           <img src="Storage/Photos/IMG7.JPG" alt="Camera gear closeup" loading="lazy" />
           <figcaption class="bts-caption">Gear & Setup</figcaption>
         </figure>
-        <!-- Add more BTS images as needed -->
       </div>
     </section>
 
-    <!-- Booking Call-to-Action -->
     <section id="booking" class="booking-section" aria-label="Bookings">
       <div class="booking-content">
         <h2 class="section-title">Book Your Shoot</h2>
@@ -91,51 +81,49 @@
       </div>
     </section>
 
-    <!-- FAQ Section (merged from faq.html) -->
     <section id="faq-section" class="faq-section" aria-label="Frequently Asked Questions">
       <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq1">How long does a typical photo shoot last?</button>
-          <div class="faq-answer" id="faq1">
+      <div class="faq-list" role="list">
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-label">How long does a typical photo shoot last?</button>
+          <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
             <p>Although when booking it says the photo shoots are timed, I’m very workable and will go over that “time limit” if it means the best results for your project.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq2">Can I book multiple cars in one session?</button>
-          <div class="faq-answer" id="faq2">
+        </article>
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-label">Can I book multiple cars in one session?</button>
+          <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
             <p>Yes! All bookings start with a meeting to discuss your project, starting there we can discuss how many cars, people, locations, time etc.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq3">Do you offer editing and retouching of photos you did not take?</button>
-          <div class="faq-answer" id="faq3">
+        </article>
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-label">Do you offer editing and retouching of photos you did not take?</button>
+          <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
             <p>Yes! While all photos that I put out are touched up/edited I can also apply my skills to your own photos and create the best results of my capabilities that you’re looking for.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq4">How do I schedule my session?</button>
-          <div class="faq-answer" id="faq4">
+        </article>
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-label">How do I schedule my session?</button>
+          <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
             <p>By clicking the Bookings button above, you can set up a meeting to further discuss your goals for your project and move forward from there.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq5">Do you only do automotive photography?</button>
-          <div class="faq-answer" id="faq5">
+        </article>
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq5" id="faq5-label">Do you only do automotive photography?</button>
+          <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-label">
             <p>No! Although automotive photography is what I am doing more often, I have experience in portraits, weddings and other such events. Please reach out for more information and to see my work of those types.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq6">How many photos come with a standard session?</button>
-          <div class="faq-answer" id="faq6">
+        </article>
+        <article class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq6" id="faq6-label">How many photos come with a standard session?</button>
+          <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-label">
             <p>There is no guaranteed amount when working with me! Every project has its own elements that creates opportunities for photos. The range will vary depending on your project so it’s hard to say a typical amount. I come out to your project with open eyes looking for all photo opportunities and creative possibilities. Please reach out further for more information and to see factors of past projects and results of that session.</p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="main-footer" role="contentinfo">
     <div class="footer-content">
       <span>&copy; 2024 Paps Productions. All rights reserved.</span>

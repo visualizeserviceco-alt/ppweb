@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Shoot | Paps Productions</title>
+  <meta name="description" content="Book your cinematic automotive photography session with Paps Productions. Choose your date, package, and get ready for an unforgettable shoot.">
+  <link rel="icon" type="image/svg+xml" href="../Storage/Logo.svg">
+  <link rel="stylesheet" href="../Styles/Style.css">
+</head>
+<body>
+  <header class="main-header transparent-blur" role="banner">
+    <nav class="main-nav" aria-label="Main Navigation">
+      <a href="/" class="logo-center" aria-label="Paps Productions Home">
+        <img src="../Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">&#9776;</button>
+      <ul class="nav-links" id="main-menu" role="menubar">
+        <li role="none"><a href="../index.html#hero" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="../index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+        <li role="none"><a href="../index.html#bts" class="nav-link" role="menuitem">Behind the Lens</a></li>
+        <li role="none"><a href="booking.html" class="nav-link active" role="menuitem">Bookings</a></li>
+        <li role="none"><a href="../index.html#faq-section" class="nav-link" role="menuitem">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="booking-section" aria-label="Book Your Shoot">
+      <div class="booking-content">
+        <h1 class="section-title">Book Your Shoot</h1>
+        <p class="booking-text">Ready to capture your car in cinematic style? Fill out the form below to request your session. We'll get back to you to confirm your booking and discuss your vision.</p>
+        <form class="contact-form" id="booking-form" autocomplete="on">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="form-row">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date">
+          </div>
+          <div class="form-row">
+            <label for="package">Package</label>
+            <select id="package" name="package">
+              <option value="">Select a package</option>
+              <option value="standard">Standard Session</option>
+              <option value="premium">Premium Session</option>
+              <option value="event">Event Coverage</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="details">Project Details</label>
+            <textarea id="details" name="details" rows="4" placeholder="Tell us about your car, location, and vision..."></textarea>
+          </div>
+          <button type="submit" class="contact-btn">Request Booking</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-content">
+      <span>&copy; 2024 Paps Productions. All rights reserved.</span>
+    </div>
+  </footer>
+  <script src="../Java/main.js"></script>
+</body>
+</html>
