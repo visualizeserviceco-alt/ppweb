@@ -1,11 +1,5 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/booking", "destination": "/booking.html" },
-    { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/faq", "destination": "/faq.html" },
-    { "source": "/reviews", "destination": "/reviews.html" },
-    { "source": "/packages", "destination": "/packages.html" }
+    { "source": "/booking", "destination": "/Pages/booking.html" }
   ]
 }
