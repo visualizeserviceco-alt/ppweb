@@ -3,15 +3,333 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Your Shoot | Paps Productions</title>
-  <meta name="description" content="Book your cinematic automotive photography session with Paps Productions. Choose your date, package, and get ready for an unforgettable shoot.">
+  <title>Book Your Session | Paps Production</title>
+  <meta name="description" content="Book your session with Paps Production. Let’s bring your creative vision to life — professionally and precisely.">
   <link rel="icon" type="image/svg+xml" href="../Storage/Logo.svg">
   <link rel="stylesheet" href="../Styles/Style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #1b1b1c;
+      color: #fff;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    .fadeInUp { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fadeInLeft { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fadeInRight { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .animated { opacity: 1 !important; transform: none !important; }
+    .booking-hero {
+      width: 100vw;
+      min-height: 48vh;
+      background: linear-gradient(120deg, #192951 60%, #1b1b1c 100%);
+      background-image: url('../Storage/Photos/IMG1.JPG');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 4rem 1.5rem;
+      overflow: hidden;
+    }
+    .booking-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #192951cc 60%, #1b1b1ccc 100%);
+      z-index: 1;
+    }
+    .booking-hero::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 90vw;
+      height: 8px;
+      border-radius: 8px;
+      background: radial-gradient(ellipse at center, #3a5aff55 0%, #19295100 80%);
+      filter: blur(4px);
+      z-index: 2;
+    }
+    .booking-hero-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .booking-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.01em;
+      color: #fff;
+      text-shadow: 0 4px 32px #000a;
+    }
+    .booking-hero p {
+      font-size: 1.3rem;
+      color: #e6e6e6;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+      text-shadow: 0 2px 12px #0008;
+    }
+    .book-now-btn {
+      background: #192951;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.95rem 2.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 24px #19295155;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 3;
+    }
+    .book-now-btn:hover, .book-now-btn:focus {
+      background: #233a7c;
+      box-shadow: 0 0 16px #3a5affcc, 0 2px 24px #19295155;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .booking-info-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+    }
+    .booking-info-img {
+      flex: 1 1 320px;
+      max-width: 340px;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 32px #0008;
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      background: #222;
+      filter: brightness(0.98) contrast(1.08);
+      transition: box-shadow 0.3s;
+    }
+    .booking-info-img:hover {
+      box-shadow: 0 8px 48px #3a5aff55, 0 4px 32px #0008;
+    }
+    .booking-info-text {
+      flex: 2 1 340px;
+      min-width: 260px;
+      color: #e6e6e6;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      padding: 0.5rem 0 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .booking-info-text h2 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.01em;
+    }
+    .booking-info-text p {
+      margin-bottom: 0.2rem;
+    }
+    .booking-info-text strong {
+      color: #bfcaff;
+      font-weight: 600;
+    }
+    .booking-info-text em {
+      color: #fff;
+      font-style: italic;
+      opacity: 0.85;
+    }
+    .booking-form-section {
+      background: linear-gradient(120deg, #23233a 60%, #1b1b1c 100%);
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 32px #19295133;
+      max-width: 540px;
+      margin: 0 auto 2.5rem auto;
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 1.5rem;
+      background: radial-gradient(ellipse at top right, #3a5aff22 0%, #19295100 80%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .booking-form-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: #fff;
+      letter-spacing: 0.01em;
+      z-index: 2;
+      position: relative;
+    }
+    .booking-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      z-index: 2;
+      position: relative;
+    }
+    .booking-form-group {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .booking-form label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #bfcaff;
+      position: absolute;
+      left: 1.2rem;
+      top: 1.1rem;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(.4,0,.2,1);
+      background: transparent;
+      z-index: 3;
+    }
+    .booking-form input,
+    .booking-form select,
+    .booking-form textarea {
+      width: 100%;
+      padding: 1.2rem 1.2rem 0.7rem 1.2rem;
+      border: 1.5px solid #bfcaff;
+      border-radius: 0.9rem;
+      background: #23233aee;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+      margin-bottom: 0.2rem;
+    }
+    .booking-form input:focus,
+    .booking-form select:focus,
+    .booking-form textarea:focus {
+      border-color: #3a5aff;
+      box-shadow: 0 0 0 2px #3a5aff33;
+    }
+    .booking-form input:focus + label,
+    .booking-form input:not(:placeholder-shown) + label,
+    .booking-form select:focus + label,
+    .booking-form select:not([value=""]) + label,
+    .booking-form textarea:focus + label,
+    .booking-form textarea:not(:placeholder-shown) + label {
+      top: 0.2rem;
+      left: 1.1rem;
+      font-size: 0.85rem;
+      color: #3a5aff;
+      background: transparent;
+    }
+    .booking-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .booking-form button[type="submit"] {
+      margin-top: 0.7rem;
+      background: #192951;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.95rem 2.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 16px #3a5aff55, 0 2px 24px #19295155;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .booking-form button[type="submit"]:hover, .booking-form button[type="submit"]:focus {
+      background: #233a7c;
+      box-shadow: 0 0 24px #3a5affcc, 0 2px 24px #19295155;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .booking-form-note {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      color: #bfcaff;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .booking-support {
+      margin: 2.5rem auto 0 auto;
+      max-width: 540px;
+      text-align: center;
+      color: #fff;
+      padding: 1.2rem 0.5rem 2.5rem 0.5rem;
+    }
+    .booking-support h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #bfcaff;
+      letter-spacing: 0.01em;
+    }
+    .booking-support a {
+      color: #3a5aff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.18s, border-bottom 0.18s;
+      border-bottom: 1.5px solid transparent;
+    }
+    .booking-support a:hover, .booking-support a:focus {
+      color: #fff;
+      border-bottom: 1.5px solid #3a5aff;
+    }
+    @media (max-width: 900px) {
+      .booking-info-section {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2.2rem 1rem 1.5rem 1rem;
+      }
+      .booking-info-img {
+        max-width: 320px;
+      }
+    }
+    @media (max-width: 600px) {
+      .booking-hero {
+        padding-top: 4.2rem;
+        padding-bottom: 2rem;
+      }
+      .booking-hero h1 {
+        font-size: 2rem;
+      }
+      .booking-info-section {
+        padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+      }
+      .booking-form-section {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header transparent-blur" role="banner">
     <nav class="main-nav" aria-label="Main Navigation">
-      <a href="/" class="logo-center" aria-label="Paps Productions Home">
+      <a href="../index.html#hero" class="logo-center" aria-label="Paps Productions Home">
         <img src="../Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
       </a>
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">&#9776;</button>
@@ -19,44 +337,113 @@
         <li role="none"><a href="../index.html#hero" class="nav-link" role="menuitem">Home</a></li>
         <li role="none"><a href="../index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
         <li role="none"><a href="../index.html#bts" class="nav-link" role="menuitem">Behind the Lens</a></li>
-        <li role="none"><a href="booking.html" class="nav-link active" role="menuitem">Bookings</a></li>
+        <li role="none"><a href="booking.html" class="nav-link active" role="menuitem" aria-current="page">Booking</a></li>
         <li role="none"><a href="../index.html#faq-section" class="nav-link" role="menuitem">FAQ</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main-content" tabindex="-1">
-    <section class="booking-section" aria-label="Book Your Shoot">
-      <div class="booking-content">
-        <h1 class="section-title">Book Your Shoot</h1>
-        <p class="booking-text">Ready to capture your car in cinematic style? Please review the information below to learn how to book your session with Paps Productions.</p>
-        <div class="booking-info">
-          <h2 class="section-title" style="font-size:1.5rem; margin-top:2rem;">How to Book</h2>
-          <ul style="font-size:1.1rem; line-height:1.7; margin:1.5rem 0 2rem 1.5rem; color:#e6e6e6;">
-            <li>Email <a href="mailto:info@papsprod.com" style="color:#fff; text-decoration:underline;">info@papsprod.com</a> with your name, car details, and preferred date(s).</li>
-            <li>Include any special requests, locations, or ideas you have for your shoot.</li>
-            <li>We will respond within 24 hours to confirm availability and discuss your vision.</li>
-            <li>Once confirmed, you'll receive a booking summary and next steps.</li>
-          </ul>
-          <h2 class="section-title" style="font-size:1.5rem; margin-top:2rem;">What to Expect</h2>
-          <ul style="font-size:1.1rem; line-height:1.7; margin:1.5rem 0 2rem 1.5rem; color:#e6e6e6;">
-            <li>Flexible session times and locations to fit your needs.</li>
-            <li>Professional editing and retouching included in all packages.</li>
-            <li>Preview gallery delivered within 48 hours of your shoot.</li>
-            <li>Final high-resolution images delivered digitally.</li>
-          </ul>
-          <h2 class="section-title" style="font-size:1.5rem; margin-top:2rem;">Questions?</h2>
-          <p style="font-size:1.1rem; color:#e6e6e6;">See the <a href="../index.html#faq-section" style="color:#fff; text-decoration:underline;">FAQ section</a> or email us any time. We're here to help you create something cinematic.</p>
-        </div>
+    <section class="booking-hero fadeInUp" aria-label="Book a Session">
+      <div class="booking-hero-content">
+        <h1>Book Your Session with Paps Production</h1>
+        <p>Let’s bring your creative vision to life — professionally and precisely.</p>
+        <button class="book-now-btn" onclick="document.getElementById('booking-form-section').scrollIntoView({behavior:'smooth'});">Book Now</button>
       </div>
+    </section>
+
+    <section class="booking-info-section fadeInLeft" aria-label="What to Expect">
+      <img src="../Storage/Photos/IMG2.JPG" alt="Booking consultation" class="booking-info-img" loading="lazy">
+      <div class="booking-info-text">
+        <h2>What to Expect</h2>
+        <p><strong>Every session starts with collaboration.</strong> We’ll discuss your goals, location, and vision to make sure your shoot fits your brand or personal style.</p>
+        <p><em>From sleek automotive photography to detailed portraits, Paps Production ensures every project is handled with creativity, precision, and professionalism.</em></p>
+      </div>
+    </section>
+
+    <section class="booking-form-section fadeInRight" id="booking-form-section" aria-label="Booking Form">
+      <h2>Booking Form</h2>
+      <form class="booking-form" autocomplete="on" name="booking" method="POST" action="mailto:info@papsprod.com" enctype="text/plain" novalidate>
+        <div class="booking-form-group">
+          <input type="text" id="name" name="name" required placeholder=" " aria-label="Name">
+          <label for="name">Name</label>
+        </div>
+        <div class="booking-form-group">
+          <input type="email" id="email" name="email" required placeholder=" " aria-label="Email">
+          <label for="email">Email</label>
+        </div>
+        <div class="booking-form-group">
+          <input type="tel" id="phone" name="phone" required placeholder=" " aria-label="Phone Number">
+          <label for="phone">Phone Number</label>
+        </div>
+        <div class="booking-form-group">
+          <select id="type" name="type" required aria-label="Type of Shoot">
+            <option value="" disabled selected hidden></option>
+            <option value="Automotive">Automotive</option>
+            <option value="Portraits">Portraits</option>
+            <option value="Events">Events</option>
+            <option value="Creative">Creative</option>
+          </select>
+          <label for="type">Type of Shoot</label>
+        </div>
+        <div class="booking-form-group">
+          <input type="date" id="date" name="date" required placeholder=" " aria-label="Preferred Date">
+          <label for="date">Preferred Date</label>
+        </div>
+        <div class="booking-form-group">
+          <textarea id="message" name="message" placeholder=" " aria-label="Message"></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit">Submit Booking</button>
+      </form>
+      <div class="booking-form-note">Once you submit, you’ll receive a follow-up email to confirm your booking and discuss details.</div>
+    </section>
+
+    <section class="booking-support fadeInUp" aria-label="Contact & Support">
+      <h3>Need help before booking?</h3>
+      <p>Email us at <a href="mailto:info@papsprod.com">info@papsprod.com</a> or message us on <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener">Instagram</a>.</p>
     </section>
   </main>
 
-  <footer class="main-footer" role="contentinfo">
-    <div class="footer-content">
-      <span>&copy; 2024 Paps Productions. All rights reserved.</span>
-    </div>
-  </footer>
+  <div id="footer-include"></div>
   <script src="../Java/main.js"></script>
+  <script>
+    // Dynamically load the footer
+    fetch('../Backend/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-include').innerHTML = html;
+      });
+
+    // Intersection Observer for fade-in animations
+    function animateOnScroll() {
+      const observer = new window.IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.fadeInUp, .fadeInLeft, .fadeInRight').forEach(el => {
+        observer.observe(el);
+      });
+    }
+    if ('IntersectionObserver' in window) animateOnScroll();
+    else {
+      // Fallback: show all
+      document.querySelectorAll('.fadeInUp, .fadeInLeft, .fadeInRight').forEach(el => el.classList.add('animated'));
+    }
+
+    // Parallax effect for hero
+    window.addEventListener('scroll', function() {
+      const hero = document.querySelector('.booking-hero');
+      if (!hero) return;
+      let scrollY = window.scrollY;
+      hero.style.backgroundPosition = `center ${Math.round(scrollY * 0.18)}px`;
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
