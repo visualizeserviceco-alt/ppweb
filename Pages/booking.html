@@ -247,6 +247,10 @@
   <div id="footer-include"></div>
   <script src="../Java/main.js"></script>
   <script>
+    // Ensure header menu JS is always initialized after main.js loads
+    if (window.initHeaderMenu) window.initHeaderMenu();
+  </script>
+  <script>
     // Dynamically load the footer
     fetch('../Backend/footer.html')
       .then(res => res.text())
