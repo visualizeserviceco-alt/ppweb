@@ -7,343 +7,8 @@
   <meta name="description" content="Book your session with Paps Production. Capture your project professionally and creatively.">
   <link rel="icon" type="image/svg+xml" href="../Storage/Logo.svg">
   <link rel="stylesheet" href="../Styles/Style.css">
+  <link rel="stylesheet" href="../Styles/booking.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: #1b1b1c;
-      color: #fff;
-      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
-      overflow-x: hidden;
-    }
-    .fadeInUp { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
-    .fadeInLeft { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
-    .fadeInRight { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
-    .animated { opacity: 1 !important; transform: none !important; }
-    .booking-hero {
-      width: 100vw;
-      min-height: 48vh;
-      background: linear-gradient(120deg, #192951 60%, #1b1b1c 100%);
-      background-image: url('../Storage/Photos/IMG1.JPG');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 7rem 1.5rem 4rem 1.5rem;
-      overflow: hidden;
-    }
-    .booking-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, #192951cc 60%, #1b1b1ccc 100%);
-      z-index: 1;
-    }
-    .booking-hero-content {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .booking-hero h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.01em;
-      color: #fff;
-      text-shadow: 0 4px 32px #000a;
-      animation: fadeInUp 1.1s cubic-bezier(.4,0,.2,1) 0.1s both;
-    }
-    .booking-hero p {
-      font-size: 1.15rem;
-      color: #e6e6e6;
-      margin-bottom: 2.2rem;
-      font-weight: 400;
-      text-shadow: 0 2px 12px #0008;
-      animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1) 0.2s both;
-    }
-    .book-now-btn {
-      background: #192951;
-      color: #fff;
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 2rem;
-      padding: 0.95rem 2.5rem;
-      cursor: pointer;
-      box-shadow: 0 2px 24px #19295155;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-      position: relative;
-      z-index: 3;
-      animation: fadeInUp 1.3s cubic-bezier(.4,0,.2,1) 0.3s both;
-    }
-    .book-now-btn:hover, .book-now-btn:focus {
-      background: #233a7c;
-      box-shadow: 0 0 16px #3a5affcc, 0 2px 24px #19295155;
-      transform: translateY(-2px) scale(1.04);
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: none; }
-    }
-    .booking-info-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-    }
-    .booking-info-img {
-      flex: 1 1 320px;
-      max-width: 340px;
-      border-radius: 1.2rem;
-      box-shadow: 0 4px 32px #0008;
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      background: #222;
-      filter: brightness(0.98) contrast(1.08);
-      transition: box-shadow 0.3s;
-    }
-    .booking-info-img:hover {
-      box-shadow: 0 8px 48px #3a5aff55, 0 4px 32px #0008;
-    }
-    .booking-info-text {
-      flex: 2 1 340px;
-      min-width: 260px;
-      color: #e6e6e6;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      padding: 0.5rem 0 0.5rem 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-    .booking-info-text h2 {
-      color: #fff;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-      letter-spacing: 0.01em;
-    }
-    .booking-info-text p {
-      margin-bottom: 0.2rem;
-    }
-    .booking-info-text strong {
-      color: #bfcaff;
-      font-weight: 600;
-    }
-    .booking-info-text em {
-      color: #fff;
-      font-style: italic;
-      opacity: 0.85;
-    }
-    .booking-form-section {
-      background: rgba(25,41,81,0.3);
-      border-radius: 1.5rem;
-      box-shadow: 0 2px 32px #19295133;
-      max-width: 540px;
-      margin: 0 auto 2.5rem auto;
-      padding: 2.5rem 1.5rem 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .booking-form-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      color: #fff;
-      letter-spacing: 0.01em;
-      z-index: 2;
-      position: relative;
-    }
-    .booking-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      z-index: 2;
-      position: relative;
-    }
-    .booking-form-group {
-      position: relative;
-      margin-bottom: 0.5rem;
-    }
-    .booking-form label {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #bfcaff;
-      position: absolute;
-      left: 1.2rem;
-      top: 1.1rem;
-      pointer-events: none;
-      transition: all 0.22s cubic-bezier(.4,0,.2,1);
-      background: transparent;
-      z-index: 3;
-    }
-    .booking-form input,
-    .booking-form select,
-    .booking-form textarea {
-      width: 100%;
-      padding: 1.2rem 1.2rem 0.7rem 1.2rem;
-      border: 1.5px solid #fff;
-      border-radius: 0.9rem;
-      background: #23233aee;
-      color: #fff;
-      font-size: 1rem;
-      font-family: inherit;
-      outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
-      margin-bottom: 0.2rem;
-    }
-    .booking-form input:focus,
-    .booking-form select:focus,
-    .booking-form textarea:focus {
-      border-color: #3a5aff;
-      box-shadow: 0 0 0 2px #3a5aff33;
-    }
-    .booking-form input:focus + label,
-    .booking-form input:not(:placeholder-shown) + label,
-    .booking-form select:focus + label,
-    .booking-form select:not([value=""]) + label,
-    .booking-form textarea:focus + label,
-    .booking-form textarea:not(:placeholder-shown) + label {
-      top: 0.2rem;
-      left: 1.1rem;
-      font-size: 0.85rem;
-      color: #3a5aff;
-      background: transparent;
-    }
-    .booking-form textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-    .booking-form button[type="submit"] {
-      margin-top: 0.7rem;
-      background: #192951;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 2rem;
-      padding: 0.95rem 2.5rem;
-      cursor: pointer;
-      box-shadow: 0 0 16px #3a5aff55, 0 2px 24px #19295155;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
-    .booking-form button[type="submit"]:hover, .booking-form button[type="submit"]:focus {
-      background: #233a7c;
-      box-shadow: 0 0 24px #3a5affcc, 0 2px 24px #19295155;
-      transform: translateY(-2px) scale(1.04);
-    }
-    .booking-form-note {
-      margin-top: 1.2rem;
-      font-size: 1rem;
-      color: #bfcaff;
-      text-align: center;
-      z-index: 2;
-      position: relative;
-    }
-    .booking-support {
-      margin: 2.5rem auto 0 auto;
-      max-width: 540px;
-      text-align: center;
-      color: #fff;
-      padding: 1.2rem 0.5rem 2.5rem 0.5rem;
-    }
-    .booking-support h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #bfcaff;
-      letter-spacing: 0.01em;
-    }
-    .booking-support a {
-      color: #192951;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.18s, border-bottom 0.18s;
-      border-bottom: 1.5px solid transparent;
-      padding: 0.2em 0.1em;
-      border-radius: 0.3em;
-    }
-    .booking-support a:hover, .booking-support a:focus {
-      color: #fff;
-      border-bottom: 1.5px solid #192951;
-      background: #19295144;
-    }
-    @media (max-width: 1024px) {
-      .booking-info-section {
-        flex-direction: column;
-        gap: 1.2rem;
-        padding: 1.5rem 0.5rem 1.2rem 0.5rem;
-      }
-      .booking-info-img {
-        max-width: 90vw;
-      }
-      .booking-hero {
-        padding: 4.5rem 0.5rem 2.2rem 0.5rem;
-      }
-      .booking-hero h1 {
-        font-size: 2rem;
-      }
-      .booking-hero p {
-        font-size: 1rem;
-      }
-      .booking-form-section {
-        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-      }
-      .booking-form input,
-      .booking-form select,
-      .booking-form textarea {
-        font-size: 1.1rem;
-        padding: 1.3rem 1.1rem 0.8rem 1.1rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .booking-hero {
-        padding: 2.2rem 0.2rem 1.2rem 0.2rem;
-      }
-      .booking-hero h1 {
-        font-size: 1.2rem;
-      }
-      .booking-hero p {
-        font-size: 0.95rem;
-      }
-      .book-now-btn {
-        width: 100%;
-        font-size: 1rem;
-        padding: 1.1rem 0;
-      }
-      .booking-info-img {
-        max-width: 100vw;
-      }
-      .booking-form-section {
-        padding: 0.7rem 0.1rem 0.7rem 0.1rem;
-      }
-      .booking-form input,
-      .booking-form select,
-      .booking-form textarea {
-        font-size: 1.15rem;
-        padding: 1.5rem 0.7rem 1rem 0.7rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <header class="main-header transparent-blur" role="banner">
@@ -381,47 +46,202 @@
     </section>
 
     <section class="booking-form-section fadeInRight" id="booking-form-section" aria-label="Booking Form">
-      <h2>Booking Form</h2>
-      <form class="booking-form" autocomplete="on" name="booking" method="POST" action="mailto:info@papsprod.com" enctype="text/plain" novalidate>
-        <div class="booking-form-group">
-          <input type="text" id="name" name="name" required placeholder=" " aria-label="Name">
-          <label for="name">Name</label>
-        </div>
-        <div class="booking-form-group">
-          <input type="email" id="email" name="email" required placeholder=" " aria-label="Email">
-          <label for="email">Email</label>
-        </div>
-        <div class="booking-form-group">
-          <input type="tel" id="phone" name="phone" required placeholder=" " aria-label="Phone Number">
-          <label for="phone">Phone Number</label>
-        </div>
-        <div class="booking-form-group">
-          <select id="type" name="type" required aria-label="Type of Shoot">
-            <option value="" disabled selected hidden></option>
-            <option value="Automotive">Automotive</option>
-            <option value="Portraits">Portraits</option>
-            <option value="Events">Events</option>
-            <option value="Creative">Creative</option>
-          </select>
-          <label for="type">Type of Shoot</label>
-        </div>
-        <div class="booking-form-group">
-          <input type="date" id="date" name="date" required placeholder=" " aria-label="Preferred Date">
-          <label for="date">Preferred Date</label>
-        </div>
-        <div class="booking-form-group">
-          <textarea id="message" name="message" placeholder=" " aria-label="Message"></textarea>
-          <label for="message">Message</label>
-        </div>
-        <button type="submit">Submit Booking</button>
-      </form>
-      <div class="booking-form-note">Once you submit, you’ll receive a follow-up email to confirm your booking and discuss details.</div>
+      <h2 style="text-align:center;">Book Your Session</h2>
+      <p style="text-align:center; max-width: 420px; margin: 0 auto 1.5rem auto; color: #e6e6e6; font-size:1.08rem;">Ready to get started? Click below to book your session through our secure Typeform. You’ll be able to select your shoot type, date, and share your vision—all in one smooth step.</p>
+      <div style="display:flex; justify-content:center; align-items:center; width:100%;">
+        <button data-tf-popup="YOUR_TYPEFORM_ID" 
+                data-tf-opacity="100" 
+                data-tf-size="70" 
+                data-tf-iframe-props="title=Booking Form" 
+                data-tf-medium="snippet" 
+                class="btn book-now-btn" 
+                style="background:#192951; color:#fff; border-radius:2rem; font-weight:700; font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.95rem 2.5rem; box-shadow:0 2px 24px #19295155; border:none; cursor:pointer; transition:background 0.2s, box-shadow 0.2s, transform 0.2s;">
+          Book Now
+        </button>
+      </div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
     </section>
 
     <section class="booking-support fadeInUp" aria-label="Contact & Support">
       <h3>Need help before booking?</h3>
-      <p>Email us at <a href="mailto:info@papsprod.com">info@papsprod.com</a> or message us on <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener">Instagram</a>.</p>
+      <p>Just message us on <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener">Instagram</a>.</p>
     </section>
+
+    <!-- Pricing and Booking Section -->
+    <section class="pricing-booking-section fadeInUp" aria-label="Pricing and Booking">
+      <div class="pricing-title-wrapper">
+        <h2 class="pricing-title">Pricing and Booking</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3 class="pricing-card-title">1 Hour Photo Session</h3>
+          <ul class="pricing-card-list">
+            <li>Multiple cars</li>
+            <li>1–2 locations</li>
+            <li class="pricing-card-price">$60</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card-title">2 Hour Photo Session</h3>
+          <ul class="pricing-card-list">
+            <li>Multiple cars</li>
+            <li>2–3 locations</li>
+            <li class="pricing-card-price">$100</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card-title">30 Min Roller Session</h3>
+          <ul class="pricing-card-list">
+            <li>1–2 cars</li>
+            <li>Many clips and one edit</li>
+            <li class="pricing-card-price">$50</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card-title">1 Hour Roller Session</h3>
+          <ul class="pricing-card-list">
+            <li>Multiple cars</li>
+            <li>Many clips and multiple edits</li>
+            <li class="pricing-card-price">$75</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <em>(All pricing and results can vary depending on your project’s goals and settings. Please keep this in mind and ask as many questions during our meeting to move forward with your project!)</em>
+      </div>
+    </section>
+
+    <style>
+      .pricing-booking-section {
+        background: #1b1b1c;
+        padding: 4rem 0 4rem 0;
+        width: 100vw;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+      .pricing-title-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+      .pricing-title {
+        background: #192951;
+        color: #fff;
+        font-family: 'Poppins', Arial, sans-serif;
+        font-size: 2.1rem;
+        font-weight: 700;
+        border: 2px solid #fff;
+        border-radius: 12px;
+        padding: 0.7rem 2.5rem;
+        box-shadow: 0 2px 16px #19295133;
+        letter-spacing: 0.01em;
+        text-align: center;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.2rem;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 2.5rem auto;
+        box-sizing: border-box;
+      }
+      .pricing-card {
+        background: #192951;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px #19295133;
+        padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s, border-color 0.22s;
+        cursor: pointer;
+      }
+      .pricing-card:hover, .pricing-card:focus {
+        transform: scale(1.035);
+        border-color: #bfcaff;
+        box-shadow: 0 8px 32px #3a5aff55, 0 4px 24px #19295133;
+        z-index: 2;
+      }
+      .pricing-card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.1rem;
+        text-align: center;
+        letter-spacing: 0.01em;
+      }
+      .pricing-card-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .pricing-card-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 0.7rem;
+        color: #fff;
+        letter-spacing: 0.01em;
+      }
+      .pricing-note {
+        margin-top: 2.2rem;
+        color: #bfcaff;
+        font-size: 1rem;
+        opacity: 0.7;
+        text-align: center;
+        max-width: 700px;
+      }
+      @media (max-width: 900px) {
+        .pricing-grid {
+          max-width: 98vw;
+          gap: 1.2rem;
+        }
+        .pricing-title {
+          font-size: 1.4rem;
+          padding: 0.6rem 1.2rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 1.2rem;
+        }
+        .pricing-card {
+          padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+        }
+        .pricing-title {
+          font-size: 1.15rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .pricing-booking-section {
+          padding: 2.2rem 0 2.2rem 0;
+        }
+        .pricing-title {
+          font-size: 1rem;
+          padding: 0.5rem 0.7rem;
+        }
+        .pricing-card-title {
+          font-size: 1.05rem;
+        }
+        .pricing-card-price {
+          font-size: 1.15rem;
+        }
+        .pricing-note {
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </main>
 
   <div id="footer-include"></div>

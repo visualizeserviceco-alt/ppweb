@@ -9,6 +9,7 @@
   --black: #111;
   --shadow: 0 8px 32px 0 rgba(17, 17, 17, 0.37);
   --header-blur: blur(18px);
+  --header-height: 120px;
   --accent: #bfcaff;
 }
 
@@ -22,6 +23,10 @@ html, body {
   font-family: 'Montserrat', 'Poppins', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+#main-content {
+  padding-top: var(--header-height);
 }
 body {
   display: flex;
