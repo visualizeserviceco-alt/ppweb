@@ -69,10 +69,10 @@ body {
   margin-bottom: 0.2rem;
 }
 .logo-img {
-  height: 120px;
+  height: 160px;
   width: auto;
-  max-width: 300px;
-  filter: drop-shadow(0 2px 8px #0008);
+  max-width: 380px;
+  filter: drop-shadow(0 2px 12px #000a);
   transition: height 0.3s, max-width 0.3s;
 }
 .menu-toggle {
@@ -116,6 +116,16 @@ body {
 @media (max-width: 900px) {
   .main-nav {
     padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .logo-center {
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  .logo-img {
+    height: 120px;
+    max-width: 220px;
   }
   .nav-links {
     flex-direction: column;
@@ -139,6 +149,10 @@ body {
   }
   .menu-toggle {
     display: block;
+    font-size: 2.6rem;
+    top: 1.5rem;
+    right: 1.2rem;
+    z-index: 1200;
   }
 }
 
