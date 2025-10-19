@@ -142,7 +142,16 @@ body {
   border-radius: 8px;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.nav-link:hover, .nav-link:focus {
+/* Desktop hover effects for nav links */
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover {
+    background: var(--brand-blue);
+    color: #fff;
+    box-shadow: 0 2px 8px #3a5aff44;
+  }
+}
+
+.nav-link:focus {
   background: var(--brand-blue);
   color: #fff;
   box-shadow: 0 2px 8px #3a5aff44;
@@ -351,11 +360,19 @@ body {
   transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.4s;
   filter: brightness(0.92) contrast(1.08);
 }
-.gallery-item:hover img,
-.gallery-item:focus img {
-  transform: scale(1.08);
-  filter: brightness(1.05) contrast(1.15) blur(1px);
+/* Desktop hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .gallery-item:hover img,
+  .gallery-item:focus img {
+    transform: scale(1.08);
+    filter: brightness(1.05) contrast(1.15) blur(1px);
+  }
+  .gallery-item:hover .gallery-caption,
+  .gallery-item:focus .gallery-caption {
+    opacity: 1;
+  }
 }
+
 .gallery-caption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -369,9 +386,34 @@ body {
   pointer-events: none;
   letter-spacing: 0.01em;
 }
-.gallery-item:hover .gallery-caption,
-.gallery-item:focus .gallery-caption {
-  opacity: 1;
+
+/* Mobile: Always show captions */
+@media (hover: none) and (pointer: coarse) {
+  .gallery-caption {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Additional mobile styles for better readability */
+@media (max-width: 900px) {
+  .gallery-caption {
+    opacity: 1;
+    pointer-events: auto;
+    font-size: 1rem;
+    padding: 0.8rem 1rem 0.5rem 1rem;
+  }
+  
+  .gallery-item {
+    /* Remove transform transitions on mobile to prevent touch issues */
+    transform: none !important;
+  }
+  
+  .gallery-item img {
+    /* Disable image scaling on mobile */
+    transform: none !important;
+    filter: brightness(0.92) contrast(1.08) !important;
+  }
 }
 
 /* BTS Section */
@@ -408,11 +450,19 @@ body {
   transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.4s;
   filter: brightness(0.95) contrast(1.08);
 }
-.bts-item:hover img,
-.bts-item:focus img {
-  transform: scale(1.06);
-  filter: brightness(1.08) contrast(1.18) blur(1px);
+/* Desktop hover effects for BTS */
+@media (hover: hover) and (pointer: fine) {
+  .bts-item:hover img,
+  .bts-item:focus img {
+    transform: scale(1.06);
+    filter: brightness(1.08) contrast(1.18) blur(1px);
+  }
+  .bts-item:hover .bts-caption,
+  .bts-item:focus .bts-caption {
+    opacity: 1;
+  }
 }
+
 .bts-caption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -426,9 +476,34 @@ body {
   pointer-events: none;
   letter-spacing: 0.01em;
 }
-.bts-item:hover .bts-caption,
-.bts-item:focus .bts-caption {
-  opacity: 1;
+
+/* Mobile: Always show BTS captions */
+@media (hover: none) and (pointer: coarse) {
+  .bts-caption {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Additional mobile styles for BTS section */
+@media (max-width: 900px) {
+  .bts-caption {
+    opacity: 1;
+    pointer-events: auto;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem 0.5rem 1rem;
+  }
+  
+  .bts-item {
+    /* Remove transform transitions on mobile */
+    transform: none !important;
+  }
+  
+  .bts-item img {
+    /* Disable image scaling on mobile */
+    transform: none !important;
+    filter: brightness(0.95) contrast(1.08) !important;
+  }
 }
 
 /* Booking Section */
@@ -462,7 +537,17 @@ body {
   box-shadow: 0 3px 12px #3a5aff33;
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-.booking-btn:hover, .booking-btn:focus {
+/* Desktop hover effects for booking button */
+@media (hover: hover) and (pointer: fine) {
+  .booking-btn:hover {
+    background: #fff;
+    color: var(--brand-blue);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 24px #3a5aff44;
+  }
+}
+
+.booking-btn:focus {
   background: #fff;
   color: var(--brand-blue);
   transform: translateY(-3px) scale(1.04);
@@ -522,7 +607,17 @@ body {
   transition: background 0.2s, color 0.2s, transform 0.2s;
   cursor: pointer;
 }
-.contact-btn:hover, .contact-btn:focus {
+/* Desktop hover effects for contact button */
+@media (hover: hover) and (pointer: fine) {
+  .contact-btn:hover {
+    background: #fff;
+    color: var(--brand-blue);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 24px #3a5aff44;
+  }
+}
+
+.contact-btn:focus {
   background: #fff;
   color: var(--brand-blue);
   transform: translateY(-2px) scale(1.04);
@@ -541,7 +636,15 @@ body {
   filter: drop-shadow(0 2px 8px #0008) brightness(0) saturate(100%) invert(44%) sepia(98%) saturate(749%) hue-rotate(210deg) brightness(102%) contrast(101%);
   transition: filter 0.2s, transform 0.2s;
 }
-.contact-social a:hover img, .contact-social a:focus img {
+/* Desktop hover effects for social icons */
+@media (hover: hover) and (pointer: fine) {
+  .contact-social a:hover img {
+    filter: drop-shadow(0 4px 16px #3a5aff88) brightness(1.2) saturate(120%) invert(44%) sepia(98%) saturate(749%) hue-rotate(210deg) brightness(102%) contrast(101%);
+    transform: scale(1.08);
+  }
+}
+
+.contact-social a:focus img {
   filter: drop-shadow(0 4px 16px #3a5aff88) brightness(1.2) saturate(120%) invert(44%) sepia(98%) saturate(749%) hue-rotate(210deg) brightness(102%) contrast(101%);
   transform: scale(1.08);
 }
@@ -609,10 +712,20 @@ body {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.faq-item:hover, .faq-item:focus-within {
-  box-shadow: 0 8px 32px #3a5aff44;
-  border: 1.5px solid var(--brand-blue);
-  transform: translateY(-2px) scale(1.01);
+/* Desktop hover effects for FAQ items */
+@media (hover: hover) and (pointer: fine) {
+  .faq-item:hover, .faq-item:focus-within {
+    box-shadow: 0 8px 32px #3a5aff44;
+    border: 1.5px solid var(--brand-blue);
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+/* Mobile: Remove transforms for FAQ items */
+@media (max-width: 900px) {
+  .faq-item {
+    transform: none !important;
+  }
 }
 .faq-question {
   width: 100%;
@@ -701,4 +814,36 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 img {
   transition: filter 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 900px) {
+  /* Prevent sticky hover states on mobile */
+  .gallery-item:hover, .bts-item:hover, .faq-item:hover {
+    transform: none !important;
+  }
+  
+  .gallery-item:hover img, .bts-item:hover img {
+    transform: none !important;
+    filter: brightness(0.92) contrast(1.08) !important;
+  }
+  
+  /* Ensure buttons don't have transform effects on mobile */
+  .booking-btn:hover, .contact-btn:hover {
+    transform: none !important;
+  }
+  
+  /* Disable transforms for social icons on mobile */
+  .contact-social a:hover img {
+    transform: none !important;
+  }
+}
+
+/* Touch device specific: prevent sticky hover transforms */
+@media (hover: none) {
+  .gallery-item, .bts-item, .faq-item, 
+  .booking-btn, .contact-btn, .contact-social a img {
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
 }
