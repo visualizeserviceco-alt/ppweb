@@ -1,86 +1,93 @@
 // MAIN.JS
 
-window.initHeaderMenu = function() {
-  /* =========================
-     Sticky Header Animation
-  ========================= */
-  const header = document.querySelector("header");
-  let lastScroll = 0;
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!header) return;
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const curr = window.scrollY;
-        if (curr > 60) {
-          header.classList.add("scrolled");
-          if (curr > lastScroll) header.classList.add("hide");
-          else header.classList.remove("hide");
-        } else {
-          header.classList.remove("scrolled", "hide");
-        }
-        lastScroll = curr;
-        ticking = false;
-      });
-      ticking = true;
+// Unify and animate mobile menu for all pages
+function initMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (!menuToggle || !navLinks) return;
+
+  // Hamburger/X icon logic
+  function updateMenuIcon() {
+    if (navLinks.classList.contains('active')) {
+      menuToggle.classList.add('open');
+      menuToggle.setAttribute('aria-label', 'Close navigation');
+      menuToggle.innerHTML = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
+    } else {
+      menuToggle.classList.remove('open');
+      menuToggle.setAttribute('aria-label', 'Open navigation');
+      menuToggle.innerHTML = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
+    }
+  }
+
+  // Initial icon
+  menuToggle.innerHTML = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
+
+  menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    navLinks.classList.toggle('active');
+    const isActive = navLinks.classList.contains('active');
+    menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    updateMenuIcon();
+  });
+
+  // Accessibility: toggle on Enter/Space
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menuToggle.click();
     }
   });
 
-  /* =========================
-     Mobile Menu Toggle + UX
-  ========================= */
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (
+      navLinks.classList.contains('active') &&
+      !navLinks.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) {
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      updateMenuIcon();
+    }
+  });
 
-  if (menuToggle && navLinks) {
-    // Toggle on click
-    menuToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle("active");
-      const expanded = navLinks.classList.contains("active");
-      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-      if (expanded) menuToggle.focus();
-    });
+  // Close menu on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      updateMenuIcon();
+      menuToggle.focus();
+    }
+  });
 
-    // Toggle on Enter/Space for accessibility
-    menuToggle.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        menuToggle.click();
+  // Close menu if resizing to desktop or rotating device
+  const closeMenuOnResize = () => {
+    if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      updateMenuIcon();
+    }
+  };
+  window.addEventListener('resize', closeMenuOnResize);
+  window.addEventListener('orientationchange', closeMenuOnResize);
+
+  // Close menu on nav link click (mobile)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 900 && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        updateMenuIcon();
       }
     });
+  });
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (
-        navLinks.classList.contains("active") &&
-        !navLinks.contains(e.target) &&
-        e.target !== menuToggle
-      ) {
-        navLinks.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-    });
+  updateMenuIcon();
+}
 
-    // Close menu on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && navLinks.classList.contains("active")) {
-        navLinks.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.focus();
-      }
-    });
-
-    // Close menu if resizing to desktop or rotating device
-    const closeMenuOnResize = () => {
-      if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
-        navLinks.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-    };
-    window.addEventListener("resize", closeMenuOnResize);
-    window.addEventListener("orientationchange", closeMenuOnResize);
-  }
+// Run on DOMContentLoaded and after header/footer loads
+document.addEventListener('DOMContentLoaded', initMobileMenu);
 
   /* =========================
      Smooth Scroll for Links (with header offset)
@@ -130,12 +137,9 @@ window.initHeaderMenu = function() {
     section.style.transform = "translateY(40px) scale(0.98)";
     fadeInOnScroll.observe(section);
   });
-};
 
-// If header is already present (not loaded via AJAX), run immediately
-if (document.querySelector("header")) {
-  window.initHeaderMenu();
-}
+
+
 
 window.initFAQ = function() {
   document.querySelectorAll('.faq-question').forEach(button => {
