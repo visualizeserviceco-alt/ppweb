@@ -160,6 +160,20 @@ body {
   letter-spacing: 0.01em;
   z-index: 2;
   position: relative;
+  text-align: center;
+}
+.booking-form-section p {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto 1.5rem auto;
+  color: #e6e6e6;
+  font-size: 1.08rem;
+}
+.booking-form-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .booking-form {
   width: 100%;
@@ -289,5 +303,218 @@ body {
   }
   .booking-hero {
     padding: 4.5rem 0.5rem 2.2rem 0.5rem;
+  }
+}
+
+/* Pricing Section Styles */
+.pricing-booking-section {
+  background: #1b1b1c;
+  padding: 4rem 0 4rem 0;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.pricing-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.pricing-title {
+  background: #192951;
+  color: #fff;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 0.7rem 2.5rem;
+  box-shadow: 0 2px 16px #19295133;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2.5rem auto;
+  box-sizing: border-box;
+}
+.pricing-card {
+  background: #192951;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #19295133;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s, border-color 0.22s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.premium-card {
+  background: linear-gradient(135deg, #192951 0%, #2a4073 100%);
+  border-color: #bfcaff;
+}
+.pricing-card:hover, .pricing-card:focus {
+  transform: scale(1.035);
+  border-color: #bfcaff;
+  box-shadow: 0 8px 32px #3a5aff55, 0 4px 24px #19295133;
+  z-index: 2;
+}
+.premium-card:hover {
+  box-shadow: 0 8px 32px #ffd70055, 0 4px 24px #19295133;
+}
+.pricing-card-badge {
+  position: absolute;
+  top: 15px;
+  right: -25px;
+  background: #ff6b6b;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 2rem;
+  transform: rotate(25deg);
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.premium-badge {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #1a1a1a;
+}
+.pricing-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin-top: 0.5rem;
+}
+.pricing-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+  width: 100%;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.2rem 0;
+}
+.feature-icon {
+  font-size: 1.1rem;
+  min-width: 20px;
+  text-align: center;
+}
+.pricing-card-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 1.2rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+  text-align: center;
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+.pricing-note {
+  margin-top: 2.2rem;
+  color: #bfcaff;
+  font-size: 1rem;
+  opacity: 0.7;
+  text-align: center;
+  max-width: 700px;
+}
+
+/* Pricing Section Responsive Styles */
+@media (max-width: 900px) {
+  .pricing-grid {
+    max-width: 98vw;
+    gap: 1.5rem;
+  }
+  .pricing-title {
+    font-size: 1.4rem;
+    padding: 0.6rem 1.2rem;
+  }
+  .pricing-card {
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+  }
+  .pricing-card-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 1.8rem;
+    right: -22px;
+  }
+}
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 95vw;
+  }
+  .pricing-card {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    max-width: none;
+  }
+  .pricing-title {
+    font-size: 1.15rem;
+  }
+  .feature-item {
+    font-size: 0.9rem;
+  }
+  .pricing-card-price {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 480px) {
+  .pricing-booking-section {
+    padding: 2.2rem 1rem 2.2rem 1rem;
+  }
+  .pricing-title {
+    font-size: 1rem;
+    padding: 0.5rem 0.7rem;
+  }
+  .pricing-card {
+    padding: 1.8rem 1rem 1.2rem 1rem;
+  }
+  .pricing-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+  .pricing-card-price {
+    font-size: 1.4rem;
+    padding: 0.6rem;
+  }
+  .pricing-note {
+    font-size: 0.9rem;
+  }
+  .feature-item {
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+  .feature-icon {
+    font-size: 1rem;
+  }
+  .pricing-card-badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 1.5rem;
+    right: -20px;
   }
 }

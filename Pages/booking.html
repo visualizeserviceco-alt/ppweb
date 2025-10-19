@@ -35,7 +35,7 @@
     <section class="booking-hero fadeInUp" aria-label="Book a Session">
       <div class="booking-hero-content">
         <h1>Book Your Session with Paps Production</h1>
-        <p>Let’s bring your creative vision to life — professionally and precisely.</p>
+        <p>Let's bring your creative vision to life — professionally and precisely.</p>
         <button class="book-now-btn" onclick="document.getElementById('booking-form-section').scrollIntoView({behavior:'smooth'});">Book Now</button>
       </div>
     </section>
@@ -44,31 +44,9 @@
       <img src="../Storage/Photos/IMG2.JPG" alt="Booking consultation" class="booking-info-img" loading="lazy">
       <div class="booking-info-text">
         <h2>What to Expect</h2>
-        <p><strong>Every session starts with collaboration.</strong> We’ll discuss your goals, location, and vision to make sure your shoot fits your brand or personal style.</p>
+        <p><strong>Every session starts with collaboration.</strong> We'll discuss your goals, location, and vision to make sure your shoot fits your brand or personal style.</p>
         <p><em>From sleek automotive photography to detailed portraits, Paps Production ensures every project is handled with creativity, precision, and professionalism.</em></p>
       </div>
-    </section>
-
-    <section class="booking-form-section fadeInRight" id="booking-form-section" aria-label="Booking Form">
-      <h2 style="text-align:center;">Book Your Session</h2>
-      <p style="text-align:center; max-width: 420px; margin: 0 auto 1.5rem auto; color: #e6e6e6; font-size:1.08rem;">Ready to get started? Click below to book your session through our secure Typeform. You’ll be able to select your shoot type, date, and share your vision—all in one smooth step.</p>
-      <div style="display:flex; justify-content:center; align-items:center; width:100%;">
-        <button data-tf-popup="YOUR_TYPEFORM_ID" 
-                data-tf-opacity="100" 
-                data-tf-size="70" 
-                data-tf-iframe-props="title=Booking Form" 
-                data-tf-medium="snippet" 
-                class="btn book-now-btn" 
-                style="background:#192951; color:#fff; border-radius:2rem; font-weight:700; font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.95rem 2.5rem; box-shadow:0 2px 24px #19295155; border:none; cursor:pointer; transition:background 0.2s, box-shadow 0.2s, transform 0.2s;">
-          Book Now
-        </button>
-      </div>
-      <script src="//embed.typeform.com/next/embed.js"></script>
-    </section>
-
-    <section class="booking-support fadeInUp" aria-label="Contact & Support">
-      <h3>Need help before booking?</h3>
-      <p>Just message us on <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener">Instagram</a>.</p>
     </section>
 
     <!-- Pricing and Booking Section -->
@@ -79,181 +57,88 @@
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3 class="pricing-card-title">1 Hour Photo Session</h3>
+          <div class="pricing-card-badge">MOST POPULAR</div>
           <ul class="pricing-card-list">
-            <li>Multiple cars</li>
-            <li>1–2 locations</li>
+            <li class="feature-item"><span class="feature-icon">📸</span> 15-25 edited photos</li>
+            <li class="feature-item"><span class="feature-icon">🚗</span> Multiple cars welcome</li>
+            <li class="feature-item"><span class="feature-icon">📍</span> 1–2 premium locations</li>
+            <li class="feature-item"><span class="feature-icon">⚡</span> 48-hour delivery</li>
+            <li class="feature-item"><span class="feature-icon">💾</span> High-res digital gallery</li>
+            <li class="feature-item"><span class="feature-icon">✨</span> Professional editing</li>
             <li class="pricing-card-price">$60</li>
           </ul>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card premium-card">
           <h3 class="pricing-card-title">2 Hour Photo Session</h3>
+          <div class="pricing-card-badge premium-badge">PREMIUM</div>
           <ul class="pricing-card-list">
-            <li>Multiple cars</li>
-            <li>2–3 locations</li>
+            <li class="feature-item"><span class="feature-icon">📸</span> 30-45 edited photos</li>
+            <li class="feature-item"><span class="feature-icon">🚗</span> Multiple cars + group shots</li>
+            <li class="feature-item"><span class="feature-icon">📍</span> 2–3 premium locations</li>
+            <li class="feature-item"><span class="feature-icon">⚡</span> 24-hour delivery</li>
+            <li class="feature-item"><span class="feature-icon">💾</span> High-res + web gallery</li>
+            <li class="feature-item"><span class="feature-icon">✨</span> Advanced editing + filters</li>
+            <li class="feature-item"><span class="feature-icon">🎨</span> Custom color grading</li>
             <li class="pricing-card-price">$100</li>
           </ul>
         </div>
         <div class="pricing-card">
           <h3 class="pricing-card-title">30 Min Roller Session</h3>
+          <div class="pricing-card-badge">QUICK CLIPS</div>
           <ul class="pricing-card-list">
-            <li>1–2 cars</li>
-            <li>Many clips and one edit</li>
+            <li class="feature-item"><span class="feature-icon">🎬</span> 1 polished video edit (30-60s)</li>
+            <li class="feature-item"><span class="feature-icon">🚗</span> 1–2 cars maximum</li>
+            <li class="feature-item"><span class="feature-icon">📹</span> 15-20 raw clips provided</li>
+            <li class="feature-item"><span class="feature-icon">⚡</span> 72-hour delivery</li>
+            <li class="feature-item"><span class="feature-icon">🎵</span> Music & sound design</li>
+            <li class="feature-item"><span class="feature-icon">✨</span> Color correction</li>
             <li class="pricing-card-price">$50</li>
           </ul>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card premium-card">
           <h3 class="pricing-card-title">1 Hour Roller Session</h3>
+          <div class="pricing-card-badge premium-badge">PRO VIDEO</div>
           <ul class="pricing-card-list">
-            <li>Multiple cars</li>
-            <li>Many clips and multiple edits</li>
+            <li class="feature-item"><span class="feature-icon">🎬</span> 2-3 video edits (30-90s each)</li>
+            <li class="feature-item"><span class="feature-icon">🚗</span> Multiple cars + detail shots</li>
+            <li class="feature-item"><span class="feature-icon">📹</span> 30+ raw clips provided</li>
+            <li class="feature-item"><span class="feature-icon">⚡</span> 48-hour delivery</li>
+            <li class="feature-item"><span class="feature-icon">🎵</span> Premium music licensing</li>
+            <li class="feature-item"><span class="feature-icon">✨</span> Advanced color grading</li>
+            <li class="feature-item"><span class="feature-icon">🎞️</span> Slow-mo & cinematic effects</li>
             <li class="pricing-card-price">$75</li>
           </ul>
         </div>
       </div>
       <div class="pricing-note">
-        <em>(All pricing and results can vary depending on your project’s goals and settings. Please keep this in mind and ask as many questions during our meeting to move forward with your project!)</em>
+        <em>(All pricing and results can vary depending on your project's goals and settings. Please keep this in mind and ask as many questions during our meeting to move forward with your project!)</em>
       </div>
     </section>
 
-    <style>
-      .pricing-booking-section {
-        background: #1b1b1c;
-        padding: 4rem 0 4rem 0;
-        width: 100vw;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-      }
-      .pricing-title-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 2.5rem;
-      }
-      .pricing-title {
-        background: #192951;
-        color: #fff;
-        font-family: 'Poppins', Arial, sans-serif;
-        font-size: 2.1rem;
-        font-weight: 700;
-        border: 2px solid #fff;
-        border-radius: 12px;
-        padding: 0.7rem 2.5rem;
-        box-shadow: 0 2px 16px #19295133;
-        letter-spacing: 0.01em;
-        text-align: center;
-      }
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.2rem;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto 2.5rem auto;
-        box-sizing: border-box;
-      }
-      .pricing-card {
-        background: #192951;
-        color: #fff;
-        border: 2px solid #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 24px #19295133;
-        padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s, border-color 0.22s;
-        cursor: pointer;
-      }
-      .pricing-card:hover, .pricing-card:focus {
-        transform: scale(1.035);
-        border-color: #bfcaff;
-        box-shadow: 0 8px 32px #3a5aff55, 0 4px 24px #19295133;
-        z-index: 2;
-      }
-      .pricing-card-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 1.1rem;
-        text-align: center;
-        letter-spacing: 0.01em;
-      }
-      .pricing-card-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      .pricing-card-price {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-top: 0.7rem;
-        color: #fff;
-        letter-spacing: 0.01em;
-      }
-      .pricing-note {
-        margin-top: 2.2rem;
-        color: #bfcaff;
-        font-size: 1rem;
-        opacity: 0.7;
-        text-align: center;
-        max-width: 700px;
-      }
-      @media (max-width: 900px) {
-        .pricing-grid {
-          max-width: 98vw;
-          gap: 1.2rem;
-        }
-        .pricing-title {
-          font-size: 1.4rem;
-          padding: 0.6rem 1.2rem;
-        }
-      }
-      @media (max-width: 768px) {
-        .pricing-grid {
-          grid-template-columns: 1fr;
-          gap: 1.2rem;
-        }
-        .pricing-card {
-          padding: 1.5rem 0.7rem 1.2rem 0.7rem;
-        }
-        .pricing-title {
-          font-size: 1.15rem;
-        }
-      }
-      @media (max-width: 480px) {
-        .pricing-booking-section {
-          padding: 2.2rem 0 2.2rem 0;
-        }
-        .pricing-title {
-          font-size: 1rem;
-          padding: 0.5rem 0.7rem;
-        }
-        .pricing-card-title {
-          font-size: 1.05rem;
-        }
-        .pricing-card-price {
-          font-size: 1.15rem;
-        }
-        .pricing-note {
-          font-size: 0.95rem;
-        }
-      }
-    </style>
+    <section class="booking-form-section fadeInRight" id="booking-form-section" aria-label="Booking Form">
+      <h2>Book Your Session</h2>
+      <p>Ready to get started? Click below to book your session through our secure Typeform. You'll be able to select your shoot type, date, and share your vision—all in one smooth step.</p>
+      <div class="booking-form-button-wrapper">
+        <button data-tf-popup="YOUR_TYPEFORM_ID" 
+                data-tf-opacity="100" 
+                data-tf-size="70" 
+                data-tf-iframe-props="title=Booking Form" 
+                data-tf-medium="snippet" 
+                class="btn book-now-btn">
+          Book Now
+        </button>
+      </div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+    </section>
+
+    <section class="booking-support fadeInUp" aria-label="Contact & Support">
+      <h3>Need help before booking?</h3>
+      <p>Just message us on <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener">Instagram</a>.</p>
+    </section>
   </main>
 
   <div id="footer-include"></div>
   <script src="../Java/main-fixed.js"></script>
-  <script>
-    // Ensure header menu JS is always initialized after main.js loads
-    if (window.initHeaderMenu) window.initHeaderMenu();
-  </script>
   <script>
     // Dynamically load the footer
     fetch('../Backend/footer.html')
