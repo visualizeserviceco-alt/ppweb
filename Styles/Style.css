@@ -148,6 +148,12 @@ body {
   box-shadow: 0 2px 8px #3a5aff44;
 }
 
+.nav-link.active {
+  background: var(--brand-blue);
+  color: #fff;
+  box-shadow: 0 2px 8px #3a5aff44;
+}
+
 /* Responsive nav */
 @media (max-width: 900px) {
   .main-nav {
@@ -234,6 +240,12 @@ body {
   }
   .nav-link:hover,
   .nav-link:focus {
+    background: var(--brand-blue);
+    color: #fff;
+    box-shadow: none;
+  }
+  
+  .nav-link.active {
     background: var(--brand-blue);
     color: #fff;
     box-shadow: none;
