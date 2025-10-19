@@ -16,7 +16,11 @@
       <a href="../index.html#hero" class="logo-center" aria-label="Paps Productions Home">
         <img src="../Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
       </a>
-      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">&#9776;</button>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <ul class="nav-links" id="main-menu" role="menubar">
         <li role="none"><a href="../index.html#hero" class="nav-link" role="menuitem">Home</a></li>
         <li role="none"><a href="../index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
@@ -245,7 +249,7 @@
   </main>
 
   <div id="footer-include"></div>
-  <script src="../Java/main.js"></script>
+  <script src="../Java/main-fixed.js"></script>
   <script>
     // Ensure header menu JS is always initialized after main.js loads
     if (window.initHeaderMenu) window.initHeaderMenu();
@@ -286,7 +290,5 @@
       hero.style.backgroundPosition = `center ${Math.round(scrollY * 0.18)}px`;
     });
   </script>
-</body>
-</html>
 </body>
 </html>

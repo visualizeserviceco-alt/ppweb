@@ -93,6 +93,9 @@ function initMobileMenu() {
   console.log('Mobile menu initialized successfully');
 }
 
+// Make function globally available for dynamic loading
+window.initMobileMenu = initMobileMenu;
+
 // FAQ functionality
 function initFAQ() {
   document.querySelectorAll('.faq-question').forEach(button => {
