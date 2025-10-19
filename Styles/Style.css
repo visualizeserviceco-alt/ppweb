@@ -128,6 +128,9 @@ body {
   align-items: center;
   margin: 0.5rem 0 0 0;
   transition: all 0.3s;
+  /* Desktop: visible by default */
+  opacity: 1;
+  pointer-events: auto;
 }
 .nav-link {
   text-decoration: none;
@@ -148,7 +151,7 @@ body {
 /* Responsive nav */
 @media (max-width: 900px) {
   .main-nav {
-    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+    padding: 0.7rem 1rem 0.5rem 1rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -161,33 +164,54 @@ body {
     height: 80px;
     max-width: 180px;
   }
+  
+  /* Mobile menu button */
+  .menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 1200;
+  }
+  
+  /* Mobile nav links */
   .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     gap: 0;
     background: rgba(17,17,17,0.98);
     backdrop-filter: blur(20px);
-    position: absolute;
-    top: 100%;
-    left: 0; 
-    right: 0;
     width: 100vw;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    z-index: 1001;
+    margin: 0;
+    
+    /* Hidden by default */
     max-height: 0;
     overflow: hidden;
-    z-index: 1001;
-    padding: 0;
-    margin: 0;
-    transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
     opacity: 0;
     pointer-events: none;
+    
+    /* Smooth transition */
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
   }
+  
+  /* Active mobile menu */
   .nav-links.active {
-    max-height: 350px;
+    max-height: 300px;
     padding: 1rem 0;
     opacity: 1;
     pointer-events: auto;
   }
+  
+  /* Mobile menu items */
   .nav-links li {
     width: 100%;
     text-align: center;
@@ -196,6 +220,8 @@ body {
   .nav-links li:last-child {
     border-bottom: none;
   }
+  
+  /* Mobile menu links */
   .nav-link {
     display: block;
     padding: 1rem 2rem;
@@ -204,34 +230,13 @@ body {
     color: #fff;
     text-decoration: none;
     border-radius: 0;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+    transition: background 0.3s ease, color 0.3s ease;
   }
   .nav-link:hover,
   .nav-link:focus {
     background: var(--brand-blue);
     color: #fff;
-    transform: translateX(10px);
     box-shadow: none;
-  }
-  .menu-toggle {
-    display: block;
-    font-size: 1.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 1.5rem;
-    z-index: 1200;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-  }
-  .menu-toggle .icon-bar {
-    width: 24px;
-    height: 2px;
-    margin: 3px 0;
   }
 }
 
