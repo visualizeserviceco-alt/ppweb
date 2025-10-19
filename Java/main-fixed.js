@@ -120,6 +120,65 @@ function initFAQ() {
 
 // Smooth scroll for anchor links
 function initSmoothScroll() {
+  // Handle data-target navigation links
+  document.querySelectorAll("a[data-target]").forEach(anchor => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute("data-target");
+      
+      // Handle booking page navigation
+      if (targetId === 'booking-page') {
+        // Check if we're already on booking page
+        if (window.location.pathname.includes('booking')) {
+          return; // Already on booking page
+        } else {
+          // Check if we're on index page or in Pages folder
+          if (window.location.pathname.includes('Pages/')) {
+            window.location.href = 'booking.html';
+          } else {
+            window.location.href = 'Pages/booking.html';
+          }
+          return;
+        }
+      }
+      
+      // Handle navigation from booking page to home sections
+      if (targetId.startsWith('home-')) {
+        const sectionId = targetId.replace('home-', '');
+        if (window.location.pathname.includes('booking')) {
+          // Navigate to home page with section (will scroll to section after load)
+          window.location.href = `../index.html#${sectionId}`;
+          return;
+        } else {
+          // Already on home page, scroll to section
+          const target = document.querySelector(`#${sectionId}`);
+          if (target) {
+            const header = document.querySelector('.main-header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const rect = target.getBoundingClientRect();
+            const scrollTo = window.scrollY + rect.top - headerHeight + 2;
+            window.scrollTo({ top: scrollTo, behavior: "smooth" });
+          }
+          return;
+        }
+      }
+      
+      // Handle same-page navigation
+      const target = document.querySelector(`#${targetId}`);
+      if (target) {
+        const header = document.querySelector('.main-header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const rect = target.getBoundingClientRect();
+        const scrollTo = window.scrollY + rect.top - headerHeight + 2;
+        window.scrollTo({ top: scrollTo, behavior: "smooth" });
+        
+        // Update URL without showing hash (optional)
+        // history.replaceState(null, null, ' ');
+      }
+    });
+  });
+
+  // Handle traditional anchor links (fallback)
   document.querySelectorAll("a[href^='#']").forEach(anchor => {
     anchor.addEventListener("click", (e) => {
       const href = anchor.getAttribute("href");
@@ -138,6 +197,27 @@ function initSmoothScroll() {
   });
 }
 
+// Handle hash navigation on page load
+function handleHashOnLoad() {
+  const hash = window.location.hash.slice(1); // Remove the #
+  if (hash) {
+    const target = document.querySelector(`#${hash}`);
+    if (target) {
+      // Wait for page to fully load
+      setTimeout(() => {
+        const header = document.querySelector('.main-header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const rect = target.getBoundingClientRect();
+        const scrollTo = window.scrollY + rect.top - headerHeight + 2;
+        window.scrollTo({ top: scrollTo, behavior: "smooth" });
+        
+        // Remove hash from URL after scrolling
+        history.replaceState(null, null, window.location.pathname);
+      }, 100);
+    }
+  }
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, initializing all functionality...');
@@ -152,6 +232,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize smooth scroll
   initSmoothScroll();
+  
+  // Handle hash navigation on page load
+  handleHashOnLoad();
   
   // Test menu after a short delay
   setTimeout(() => {
