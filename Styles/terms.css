@@ -1,0 +1,358 @@
+/* =============================================================================
+   TERMS & CONDITIONS PAGE STYLES
+   Specialized styling for the terms page with clean, readable typography
+   and professional presentation
+   ============================================================================= */
+
+/* Terms Hero Section */
+.terms-hero {
+  background: linear-gradient(135deg, #111 60%, #3a5aff 100%);
+  padding: 140px 20px 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.terms-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('Storage/Photos/IMG2565.jpg') center/cover;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.terms-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terms-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.terms-hero p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* Main Terms Content */
+.terms-content {
+  background: #111;
+  padding: 80px 20px 100px 20px;
+  min-height: calc(100vh - 300px);
+}
+
+.terms-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(17, 17, 17, 0.85);
+  border-radius: 16px;
+  padding: 60px 50px;
+  box-shadow: 0 8px 32px 0 rgba(17, 17, 17, 0.37);
+  border: 1px solid rgba(58, 90, 255, 0.2);
+}
+
+/* Terms Meta Information */
+.terms-meta {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.terms-meta p {
+  color: #999;
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.terms-meta strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Dividers */
+.terms-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #3a5aff 50%, transparent 100%);
+  margin: 40px auto;
+  border-radius: 2px;
+}
+
+/* Terms Sections */
+.terms-section {
+  margin-bottom: 50px;
+}
+
+.terms-section:last-of-type {
+  margin-bottom: 30px;
+}
+
+.terms-section h2 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3a5aff;
+  display: inline-block;
+}
+
+.terms-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.terms-section li {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.terms-section li::before {
+  content: '•';
+  color: #3a5aff;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+/* Special Agreement Section */
+.terms-agreement {
+  background: rgba(58, 90, 255, 0.1);
+  border-left: 4px solid #3a5aff;
+  padding: 25px 30px;
+  margin: 30px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.terms-contact {
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+.terms-contact a {
+  color: #3a5aff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.terms-contact a:hover {
+  color: #bfcaff;
+  text-decoration: underline;
+}
+
+/* Terms Footer */
+.terms-footer {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+}
+
+.terms-footer p {
+  color: #999;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.terms-book-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #3a5aff 0%, #111 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px 0 rgba(17, 17, 17, 0.37);
+  border: 2px solid transparent;
+}
+
+.terms-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(58, 90, 255, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+  background: #3a5aff;
+}
+
+/* Animations */
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fadeInUp.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .terms-hero {
+    padding: 120px 15px 60px 15px;
+  }
+  
+  .terms-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .terms-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .terms-content {
+    padding: 60px 15px 80px 15px;
+  }
+  
+  .terms-container {
+    padding: 40px 25px;
+    border-radius: 12px;
+  }
+  
+  .terms-section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .terms-section li {
+    font-size: 0.95rem;
+    padding-left: 20px;
+  }
+  
+  .terms-agreement {
+    padding: 20px 20px;
+    font-size: 1rem;
+  }
+  
+  .terms-book-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .terms-hero p {
+    font-size: 1rem;
+  }
+  
+  .terms-container {
+    padding: 30px 20px;
+  }
+  
+  .terms-section h2 {
+    font-size: 1.2rem;
+  }
+  
+  .terms-section li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .fadeInUp {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .terms-book-btn {
+    transition: none;
+  }
+  
+  .terms-book-btn:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .terms-container {
+    border: 2px solid #ffffff;
+  }
+  
+  .terms-section h2 {
+    border-bottom-color: #ffffff;
+  }
+  
+  .terms-agreement {
+    border-left-color: #ffffff;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .terms-hero {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 20px !important;
+  }
+  
+  .terms-hero h1,
+  .terms-hero p {
+    color: #000000 !important;
+  }
+  
+  .terms-content {
+    background: #ffffff !important;
+  }
+  
+  .terms-container {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: 1px solid #000000 !important;
+  }
+  
+  .terms-section h2 {
+    color: #000000 !important;
+    border-bottom-color: #000000 !important;
+  }
+  
+  .terms-section li {
+    color: #000000 !important;
+  }
+  
+  .terms-agreement {
+    background: #f5f5f5 !important;
+    color: #000000 !important;
+    border-left-color: #000000 !important;
+  }
+  
+  .terms-book-btn {
+    display: none !important;
+  }
+}

@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Your Session with Paps Production</title>
   <meta name="description" content="Book your session with Paps Production. Capture your project professionally and creatively.">
-  <link rel="icon" type="image/svg+xml" href="../Storage/Logo.svg">
-  <link rel="stylesheet" href="../Styles/Style.css">
-  <link rel="stylesheet" href="../Styles/booking.css">
+  <link rel="icon" type="image/svg+xml" href="Storage/Logo.svg">
+  <link rel="stylesheet" href="Styles/Style.css">
+  <link rel="stylesheet" href="Styles/booking.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="main-header transparent-blur" role="banner">
     <nav class="main-nav" aria-label="Main Navigation">
-      <a href="../index.html#hero" class="logo-center" aria-label="Paps Productions Home">
-        <img src="../Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
+      <a href="/" class="logo-center" aria-label="Paps Productions Home">
+        <img src="Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
       </a>
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">
         <span class="icon-bar"></span>
@@ -22,11 +22,9 @@
         <span class="icon-bar"></span>
       </button>
       <ul class="nav-links" id="main-menu" role="menubar">
-        <li role="none"><a href="../index.html#hero" class="nav-link" role="menuitem">Home</a></li>
-        <li role="none"><a href="../index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
-        <li role="none"><a href="../index.html#bts" class="nav-link" role="menuitem">Behind the Lens</a></li>
-        <li role="none"><a href="booking.html" class="nav-link active" role="menuitem" aria-current="page">Booking</a></li>
-        <li role="none"><a href="../index.html#faq-section" class="nav-link" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="/booking" class="nav-link active" role="menuitem" aria-current="page">Booking</a></li>
+        <li role="none"><a href="/terms" class="nav-link" role="menuitem">Terms</a></li>
       </ul>
     </nav>
   </header>
@@ -41,7 +39,7 @@
     </section>
 
     <section class="booking-info-section fadeInLeft" aria-label="What to Expect">
-      <img src="../Storage/Photos/IMG2.JPG" alt="Booking consultation" class="booking-info-img" loading="lazy">
+      <img src="Storage/Photos/IMG2.JPG" alt="Booking consultation" class="booking-info-img" loading="lazy">
       <div class="booking-info-text">
         <h2>What to Expect</h2>
         <p><strong>Every session starts with collaboration.</strong> We'll discuss your goals, location, and vision to make sure your shoot fits your brand or personal style.</p>
@@ -52,7 +50,7 @@
     <!-- Pricing and Booking Section -->
     <section class="pricing-booking-section fadeInUp" aria-label="Pricing and Booking">
       <div class="pricing-title-wrapper">
-        <h2 class="pricing-title">Pricing and Booking</h2>
+        <h2 class="pricing-title">Pricing</h2>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -97,7 +95,7 @@
         </div>
         <div class="pricing-card premium-card">
           <h3 class="pricing-card-title">1 Hour Roller Session</h3>
-          <div class="pricing-card-badge premium-badge">PRO VIDEO</div>
+          <div class="pricing-card-badge premium-badge">PREMIUM</div>
           <ul class="pricing-card-list">
             <li class="feature-item"><span class="feature-icon">🎬</span> 2-3 video edits (30-90s each)</li>
             <li class="feature-item"><span class="feature-icon">🚗</span> Multiple cars + detail shots</li>
@@ -128,6 +126,7 @@
           Book Now
         </button>
       </div>
+      <p class="booking-terms-note">By booking, you agree to our <a href="/terms" class="terms-link">Terms & Conditions</a>.</p>
       <script src="//embed.typeform.com/next/embed.js"></script>
     </section>
 
@@ -138,10 +137,10 @@
   </main>
 
   <div id="footer-include"></div>
-  <script src="../Java/main-fixed.js"></script>
+  <script src="Java/main-fixed.js"></script>
   <script>
     // Dynamically load the footer
-    fetch('../Backend/footer.html')
+    fetch('Backend/footer.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('footer-include').innerHTML = html;

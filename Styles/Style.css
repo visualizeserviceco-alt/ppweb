@@ -278,6 +278,19 @@ body {
   position: relative;
   background-size: cover;
   background-position: center;
+  background-attachment: scroll; /* Better for mobile */
+  background-repeat: no-repeat;
+}
+
+/* Mobile hero optimizations */
+@media (max-width: 900px) {
+  .hero-fullscreen {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    border-radius: 0 0 20px 20px;
+  }
 }
 .hero-overlay {
   position: absolute;
@@ -341,6 +354,15 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2vw 4rem 2vw;
+}
+
+/* Mobile optimization for gallery grid */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 4vw 3rem 4vw;
+  }
 }
 .gallery-item {
   position: relative;
@@ -432,6 +454,41 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2vw 4rem 2vw;
+}
+
+/* Mobile optimization for BTS grid */
+@media (max-width: 480px) {
+  .bts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 4vw 3rem 4vw;
+  }
+}
+
+/* Ensure images load and display properly on all mobile devices */
+@media (max-width: 900px) {
+  .gallery-item img, .bts-item img {
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    object-fit: cover;
+    object-position: center;
+    background-color: #181818;
+    display: block;
+  }
+  
+  .gallery-item, .bts-item {
+    min-height: 200px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Ensure proper image loading */
+  img {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+  }
 }
 .bts-item {
   position: relative;
@@ -814,6 +871,57 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 img {
   transition: filter 0.3s, box-shadow 0.3s, transform 0.3s;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile image loading optimizations */
+@media (max-width: 900px) {
+  img {
+    /* Improve image loading on mobile */
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Prevent layout shift while images load */
+  .gallery-item, .bts-item {
+    background: #181818;
+    min-height: 220px;
+  }
+  
+  /* Loading state for images */
+  .gallery-item img[loading="lazy"], 
+  .bts-item img[loading="lazy"] {
+    background: linear-gradient(90deg, #181818 0%, #2a2a2a 50%, #181818 100%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite ease-in-out;
+  }
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 375px) {
+  .gallery-grid, .bts-grid {
+    padding: 0 3vw 2rem 3vw;
+    gap: 1rem;
+  }
+  
+  .gallery-item, .bts-item {
+    min-height: 180px;
+    border-radius: 12px;
+  }
+  
+  .gallery-caption, .bts-caption {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem 0.4rem 0.8rem;
+  }
 }
 
 /* Mobile touch optimizations */
