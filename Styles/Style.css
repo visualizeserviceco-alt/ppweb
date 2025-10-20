@@ -186,10 +186,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     position: relative;
     z-index: 1200;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .menu-toggle:hover,
+  .menu-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
   }
   
   /* Mobile nav links */
@@ -226,6 +235,13 @@ body {
     pointer-events: auto;
   }
   
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+  
   /* Mobile menu items */
   .nav-links li {
     width: 100%;
@@ -239,19 +255,25 @@ body {
   /* Mobile menu links */
   .nav-link {
     display: block;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #fff;
     text-decoration: none;
     border-radius: 0;
     transition: background 0.3s ease, color 0.3s ease;
+    min-height: 44px; /* Better touch target */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav-link:hover,
   .nav-link:focus {
     background: var(--brand-blue);
     color: #fff;
     box-shadow: none;
+    outline: 2px solid rgba(255, 255, 255, 0.3);
+    outline-offset: -2px;
   }
   
   .nav-link.active {

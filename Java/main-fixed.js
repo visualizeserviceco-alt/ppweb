@@ -33,6 +33,14 @@ function initMobileMenu() {
     const isActive = navLinks.classList.contains('active');
     console.log('Menu is now:', isActive ? 'open' : 'closed');
     menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    
+    // Handle body scroll locking
+    if (isActive) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+    
     updateMenuIcon();
   });
 
