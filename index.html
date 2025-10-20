@@ -12,23 +12,7 @@
   <link rel="stylesheet" href="Styles/Style.css">
 </head>
 <body>
-  <header class="main-header transparent-blur" role="banner">
-    <nav class="main-nav" aria-label="Main Navigation">
-      <a href="/" class="logo-center" aria-label="Paps Productions Home">
-        <img src="Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
-      </a>
-      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <ul class="nav-links" id="main-menu" role="menubar">
-        <li role="none"><a href="/" class="nav-link active" role="menuitem" aria-current="page">Home</a></li>
-        <li role="none"><a href="/booking" class="nav-link" role="menuitem">Booking</a></li>
-        <li role="none"><a href="/terms" class="nav-link" role="menuitem">Terms</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div id="header-include"></div>
 
   <main id="main-content" tabindex="-1">
     <section id="hero" class="hero-fullscreen" aria-label="Hero" style="background-image: url('Storage/Photos/IMG1.JPG');">
@@ -133,6 +117,23 @@
   <script src="footer.js"></script>
 
   <script>
+    // Dynamically load the header
+    fetch('Backend/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-include').innerHTML = html;
+        // Set active state for current page
+        const homeLink = document.querySelector('a[href="/"]');
+        if (homeLink && !homeLink.classList.contains('active')) {
+          homeLink.classList.add('active');
+          homeLink.setAttribute('aria-current', 'page');
+        }
+        // Initialize mobile menu functionality
+        if (window.initMobileMenu) {
+          window.initMobileMenu();
+        }
+      });
+
     // Coming Soon Popup functionality
     function openComingSoonPopup() {
       document.getElementById('comingSoonPopup').style.display = 'flex';

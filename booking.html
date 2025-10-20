@@ -11,23 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="main-header transparent-blur" role="banner">
-    <nav class="main-nav" aria-label="Main Navigation">
-      <a href="/" class="logo-center" aria-label="Paps Productions Home">
-        <img src="Storage/Logo.svg" alt="Paps Productions Logo" class="logo-img" />
-      </a>
-      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-menu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <ul class="nav-links" id="main-menu" role="menubar">
-        <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
-        <li role="none"><a href="/booking" class="nav-link active" role="menuitem" aria-current="page">Booking</a></li>
-        <li role="none"><a href="/terms" class="nav-link" role="menuitem">Terms</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div id="header-include"></div>
 
   <main id="main-content" tabindex="-1">
     <section class="booking-hero fadeInUp" aria-label="Book a Session">
@@ -133,6 +117,23 @@
   <div id="footer-include"></div>
   <script src="Java/main-fixed.js"></script>
   <script>
+    // Dynamically load the header
+    fetch('Backend/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-include').innerHTML = html;
+        // Set active state for current page
+        const bookingLink = document.querySelector('a[href="/booking"]');
+        if (bookingLink && !bookingLink.classList.contains('active')) {
+          bookingLink.classList.add('active');
+          bookingLink.setAttribute('aria-current', 'page');
+        }
+        // Initialize mobile menu functionality
+        if (window.initMobileMenu) {
+          window.initMobileMenu();
+        }
+      });
+
     // Dynamically load the footer
     fetch('Backend/footer.html')
       .then(res => res.text())
