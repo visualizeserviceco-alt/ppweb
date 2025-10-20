@@ -34,7 +34,7 @@
       <div class="booking-hero-content">
         <h1>Book Your Session with Paps Production</h1>
         <p>Let's bring your creative vision to life — professionally and precisely.</p>
-        <button class="book-now-btn" onclick="document.getElementById('booking-form-section').scrollIntoView({behavior:'smooth'});">Book Now</button>
+        <button class="book-now-btn" onclick="openComingSoonPopup()">Book Now</button>
       </div>
     </section>
 
@@ -115,19 +115,13 @@
 
     <section class="booking-form-section fadeInRight" id="booking-form-section" aria-label="Booking Form">
       <h2>Book Your Session</h2>
-      <p>Ready to get started? Click below to book your session through our secure Typeform. You'll be able to select your shoot type, date, and share your vision—all in one smooth step.</p>
+      <p>We're working on exciting improvements to make your booking experience even better! Our new booking system will be available soon.</p>
       <div class="booking-form-button-wrapper">
-        <button data-tf-popup="YOUR_TYPEFORM_ID" 
-                data-tf-opacity="100" 
-                data-tf-size="70" 
-                data-tf-iframe-props="title=Booking Form" 
-                data-tf-medium="snippet" 
-                class="btn book-now-btn">
+        <button class="btn book-now-btn" onclick="openComingSoonPopup()">
           Book Now
         </button>
       </div>
       <p class="booking-terms-note">By booking, you agree to our <a href="/terms" class="terms-link">Terms & Conditions</a>.</p>
-      <script src="//embed.typeform.com/next/embed.js"></script>
     </section>
 
     <section class="booking-support fadeInUp" aria-label="Contact & Support">
@@ -173,6 +167,48 @@
       let scrollY = window.scrollY;
       hero.style.backgroundPosition = `center ${Math.round(scrollY * 0.18)}px`;
     });
+
+    // Coming Soon Popup functionality
+    function openComingSoonPopup() {
+      document.getElementById('comingSoonPopup').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeComingSoonPopup() {
+      document.getElementById('comingSoonPopup').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close popup when clicking outside
+    window.addEventListener('click', function(event) {
+      const popup = document.getElementById('comingSoonPopup');
+      if (event.target === popup) {
+        closeComingSoonPopup();
+      }
+    });
   </script>
+
+  <!-- Coming Soon Popup -->
+  <div id="comingSoonPopup" class="popup-overlay">
+    <div class="popup-content">
+      <button class="popup-close" onclick="closeComingSoonPopup()" aria-label="Close popup">&times;</button>
+      <div class="popup-icon">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#3a5aff"/>
+        </svg>
+      </div>
+      <h2>Coming Soon!</h2>
+      <p>We're working on exciting improvements to make your booking experience even better.</p>
+      <p>In the meantime, reach out to us directly on Instagram to book your session!</p>
+      <div class="popup-buttons">
+        <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener" class="popup-btn primary">
+          Contact on Instagram
+        </a>
+        <button onclick="closeComingSoonPopup()" class="popup-btn secondary">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -185,14 +185,14 @@ body {
 }
 
 .terms-link {
-  color: #ff6b35;
+  color: #3a5aff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .terms-link:hover {
-  color: #ff8c5a;
+  color: #bfcaff;
   text-decoration: underline;
 }
 .booking-form {
@@ -299,7 +299,7 @@ body {
   letter-spacing: 0.01em;
 }
 .booking-support a {
-  color: #4A9EFF;
+  color: #3a5aff;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.18s, border-bottom 0.18s;
@@ -308,9 +308,9 @@ body {
   border-radius: 0.3em;
 }
 .booking-support a:hover, .booking-support a:focus {
-  color: #66B3FF;
-  border-bottom: 1.5px solid #4A9EFF;
-  background: #4A9EFF22;
+  color: #bfcaff;
+  border-bottom: 1.5px solid #3a5aff;
+  background: #3a5aff22;
 }
 @media (max-width: 1024px) {
   .booking-info-section {
@@ -392,13 +392,13 @@ body {
   z-index: 2;
 }
 .premium-card:hover {
-  box-shadow: 0 8px 32px #ffd70055, 0 4px 24px #19295133;
+  box-shadow: 0 8px 32px #3a5aff55, 0 4px 24px #19295133;
 }
 .pricing-card-badge {
   position: absolute;
   top: 15px;
   right: -25px;
-  background: #ff6b6b;
+  background: #3a5aff;
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -408,8 +408,8 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 .premium-badge {
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
-  color: #1a1a1a;
+  background: linear-gradient(45deg, #3a5aff, #bfcaff);
+  color: #fff;
 }
 .pricing-card-title {
   font-size: 1.25rem;
@@ -536,5 +536,169 @@ body {
     font-size: 0.6rem;
     padding: 0.2rem 1.5rem;
     right: -20px;
+  }
+}
+
+/* Coming Soon Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(58, 90, 255, 0.1) 100%);
+  border: 2px solid rgba(58, 90, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  animation: popupFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px;
+  line-height: 1;
+}
+
+.popup-close:hover {
+  color: #3a5aff;
+}
+
+.popup-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.popup-content h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.popup-content p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.popup-btn {
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.popup-btn.primary {
+  background: linear-gradient(135deg, #3a5aff 0%, #111 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(58, 90, 255, 0.3);
+}
+
+.popup-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(58, 90, 255, 0.4);
+  background: #3a5aff;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.popup-btn.secondary {
+  background: transparent;
+  color: #999;
+  border: 2px solid rgba(58, 90, 255, 0.3);
+}
+
+.popup-btn.secondary:hover {
+  background: rgba(58, 90, 255, 0.1);
+  color: #bfcaff;
+  border-color: #3a5aff;
+}
+
+/* Mobile responsive popup */
+@media (max-width: 768px) {
+  .popup-content {
+    padding: 30px 20px;
+    margin: 20px;
+    max-width: none;
+  }
+  
+  .popup-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .popup-content p {
+    font-size: 1rem;
+  }
+  
+  .popup-btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    padding: 25px 15px;
+  }
+  
+  .popup-content h2 {
+    font-size: 1.4rem;
+  }
+  
+  .popup-content p {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
   }
 }
