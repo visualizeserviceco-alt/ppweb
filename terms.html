@@ -191,16 +191,26 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.1 });
       document.querySelectorAll('.fadeInUp').forEach(el => {
         observer.observe(el);
       });
     }
-    if ('IntersectionObserver' in window) animateOnScroll();
-    else {
-      // Fallback: show all
+    
+    // Immediate fallback for mobile/small screens or if IntersectionObserver fails
+    function showContentImmediately() {
       document.querySelectorAll('.fadeInUp').forEach(el => el.classList.add('animated'));
     }
+    
+    if ('IntersectionObserver' in window && window.innerWidth > 768) {
+      animateOnScroll();
+    } else {
+      // Show content immediately on mobile or if no IntersectionObserver
+      showContentImmediately();
+    }
+    
+    // Also show content after a brief delay as additional fallback
+    setTimeout(showContentImmediately, 100);
   </script>
 </body>
 </html>
