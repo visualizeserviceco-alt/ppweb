@@ -61,6 +61,7 @@ function initMobileMenu() {
     ) {
       navLinks.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
       updateMenuIcon();
     }
   });
@@ -70,6 +71,7 @@ function initMobileMenu() {
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
       navLinks.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
       updateMenuIcon();
       menuToggle.focus();
     }
@@ -80,6 +82,7 @@ function initMobileMenu() {
     if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
       navLinks.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
       updateMenuIcon();
     }
   };
@@ -92,6 +95,7 @@ function initMobileMenu() {
       if (window.innerWidth < 900 && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
         updateMenuIcon();
       }
     });
