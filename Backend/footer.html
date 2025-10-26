@@ -9,12 +9,12 @@
     <div class="footer-social">
       <a href="https://www.instagram.com/paps_productions/" aria-label="Instagram" target="_blank" rel="noopener" class="footer-social-btn">
         <span class="footer-social-icon">
-          <img src="../Storage/instagram.svg" alt="Instagram" />
+          <i data-lucide="instagram"></i>
         </span>
       </a>
       <a href="https://www.facebook.com/papsproductions/" aria-label="Facebook" target="_blank" rel="noopener" class="footer-social-btn">
         <span class="footer-social-icon">
-          <img src="../Storage/facebook.svg" alt="Facebook" />
+          <i data-lucide="facebook"></i>
         </span>
       </a>
     </div>
@@ -77,16 +77,22 @@
   .footer-social-btn:hover, .footer-social-btn:focus {
     background: #fff;
   }
-  .footer-social-icon img {
-    width: 24px;
-    height: 24px;
-    display: block;
-    filter: invert(1);
-    transition: filter 0.3s ease-in-out;
+  .footer-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
-  .footer-social-btn:hover .footer-social-icon img,
-  .footer-social-btn:focus .footer-social-icon img {
-    filter: invert(17%) sepia(61%) saturate(1816%) hue-rotate(199deg) brightness(98%) contrast(101%);
+  .footer-social-icon i {
+    width: 20px;
+    height: 20px;
+    stroke: #fff;
+    transition: stroke 0.3s ease-in-out;
+  }
+  .footer-social-btn:hover .footer-social-icon i,
+  .footer-social-btn:focus .footer-social-icon i {
+    stroke: #192951;
   }
   .footer-copyright {
     font-size: 1rem;

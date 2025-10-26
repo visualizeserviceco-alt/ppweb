@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="Styles/Style.css">
   <link rel="stylesheet" href="Styles/booking.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <div id="header-include"></div>
@@ -122,6 +123,12 @@
       .then(res => res.text())
       .then(html => {
         document.getElementById('header-include').innerHTML = html;
+        
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+        
         // Set active state for current page
         const bookingLink = document.querySelector('a[href="/booking"]');
         if (bookingLink && !bookingLink.classList.contains('active')) {
@@ -139,6 +146,11 @@
       .then(res => res.text())
       .then(html => {
         document.getElementById('footer-include').innerHTML = html;
+        
+        // Initialize Lucide icons in footer
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
       });
 
     // Intersection Observer for fade-in animations

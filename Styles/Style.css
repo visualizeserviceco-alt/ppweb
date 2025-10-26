@@ -15,6 +15,15 @@
 
 /* Reset & base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Global Lucide icon styling */
+i[data-lucide] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
 html, body {
   width: 100vw;
   min-height: 100vh;
@@ -100,25 +109,22 @@ body {
   transform: translateY(-50%) rotate(90deg) scale(1.15);
 }
 
-/* Hamburger to X icon transition */
-.menu-toggle .icon-bar {
-  display: block;
-  width: 28px;
-  height: 3px;
-  margin: 6px auto;
-  background: var(--white);
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+/* Menu toggle icon styles */
+.menu-toggle .menu-icon,
+.menu-toggle .close-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--white);
+  transition: all 0.3s ease;
 }
-.menu-toggle.open .icon-bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+
+.menu-toggle.open .menu-icon {
+  display: none;
 }
-.menu-toggle.open .icon-bar:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.open .icon-bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+
+.menu-toggle.open .close-icon {
+  display: block !important;
+  stroke: #bfcaff;
 }
 
 /* Nav menu base styles */
@@ -187,7 +193,6 @@ body {
   /* Mobile menu button */
   .menu-toggle {
     display: flex !important;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 44px;
@@ -197,7 +202,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 1200;
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
     transition: background-color 0.2s ease, transform 0.3s ease;
   }
@@ -380,6 +385,9 @@ body {
   font-weight: 400;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 12px #0008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Gallery Section */
@@ -658,6 +666,9 @@ body {
   border: none;
   box-shadow: 0 3px 12px #3a5aff33;
   transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 /* Desktop hover effects for booking button */
 @media (hover: hover) and (pointer: fine) {
@@ -1118,7 +1129,9 @@ img {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 

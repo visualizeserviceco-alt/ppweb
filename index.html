@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="Storage/Logo.svg">
   <link rel="stylesheet" href="Styles/Style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <div id="header-include"></div>
@@ -19,7 +20,10 @@
       <div class="hero-overlay"></div>
       <div class="hero-content minimal">
         <h1 class="hero-title">Paps Productions</h1>
-        <p class="hero-subtitle">Cinematic Automotive Photography</p>
+        <p class="hero-subtitle">
+          <i data-lucide="camera" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;"></i>
+          Cinematic Automotive Photography
+        </p>
       </div>
     </section>
 
@@ -65,7 +69,10 @@
       <div class="booking-content">
         <h2 class="section-title">Book Your Shoot</h2>
         <p class="booking-text">Ready to capture your car in cinematic style? Book your session now.</p>
-        <button onclick="openComingSoonPopup()" class="btn booking-btn" aria-label="Book Your Session">Book Now</button>
+        <button onclick="openComingSoonPopup()" class="btn booking-btn" aria-label="Book Your Session">
+          <i data-lucide="calendar" style="width: 18px; height: 18px; margin-right: 8px;"></i>
+          Book Now
+        </button>
       </div>
     </section>
 
@@ -122,6 +129,12 @@
       .then(res => res.text())
       .then(html => {
         document.getElementById('header-include').innerHTML = html;
+        
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+        
         // Set active state for current page
         const homeLink = document.querySelector('a[href="/"]');
         if (homeLink && !homeLink.classList.contains('active')) {
@@ -168,6 +181,7 @@
       <p>In the meantime, reach out to me directly on Instagram to book your session!</p>
       <div class="popup-buttons">
         <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener" class="popup-btn primary">
+          <i data-lucide="instagram" style="width: 18px; height: 18px; margin-right: 8px;"></i>
           Contact on Instagram
         </a>
         <button onclick="closeComingSoonPopup()" class="popup-btn secondary">

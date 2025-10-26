@@ -9,6 +9,11 @@ fetch('/Backend/header.html')
     }
     header.outerHTML = html;
     
+    // Initialize Lucide icons in header
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+    
     // Reinitialize mobile menu after header is loaded
     if (window.initMobileMenu) {
       window.initMobileMenu();
@@ -26,4 +31,9 @@ fetch('/Backend/footer.html')
       document.body.appendChild(footer);
     }
     footer.innerHTML = html;
+    
+    // Initialize Lucide icons in footer
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
   });
