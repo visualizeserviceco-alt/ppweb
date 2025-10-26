@@ -1,0 +1,191 @@
+// MAIN.JS - Clean version
+
+// Mobile menu functionality
+function initMobileMenu() {
+  console.log('Initializing mobile menu...');
+  
+  // Add a small delay to ensure DOM is fully rendered
+  setTimeout(() => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    console.log('Menu toggle element:', menuToggle);
+    console.log('Nav links element:', navLinks);
+    console.log('Menu toggle visible:', menuToggle ? window.getComputedStyle(menuToggle).display : 'N/A');
+    
+    if (!menuToggle || !navLinks) {
+      console.error('Menu elements not found!');
+      console.log('Available elements:', {
+        allButtons: document.querySelectorAll('button'),
+        allMenuToggles: document.querySelectorAll('.menu-toggle'),
+        allNavLinks: document.querySelectorAll('.nav-links')
+      });
+      return;
+    }
+
+    // Hamburger/X icon animation
+    function updateMenuIcon() {
+      if (navLinks.classList.contains('active')) {
+        menuToggle.classList.add('open');
+        menuToggle.setAttribute('aria-label', 'Close navigation');
+      } else {
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+      }
+    }
+
+    // Menu toggle click handler
+    menuToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Menu toggle clicked');
+      navLinks.classList.toggle('active');
+      const isActive = navLinks.classList.contains('active');
+      console.log('Menu is now:', isActive ? 'open' : 'closed');
+      menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      
+      // Handle body scroll locking
+      if (isActive) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
+      
+      updateMenuIcon();
+    });
+
+    // Keyboard accessibility
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        navLinks.classList.contains('active') &&
+        !navLinks.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        updateMenuIcon();
+      }
+    });
+
+    // Close menu on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        updateMenuIcon();
+        menuToggle.focus();
+      }
+    });
+
+    // Close menu on window resize (desktop view)
+    const closeMenuOnResize = () => {
+      if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        updateMenuIcon();
+      }
+    };
+    window.addEventListener('resize', closeMenuOnResize);
+    window.addEventListener('orientationchange', closeMenuOnResize);
+
+    // Close menu when nav link is clicked (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 900 && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+          updateMenuIcon();
+        }
+      });
+    });
+
+    updateMenuIcon();
+    console.log('Mobile menu initialized successfully');
+  }, 100);
+}
+
+// Make function globally available for dynamic loading
+window.initMobileMenu = initMobileMenu;
+
+// FAQ functionality
+function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+      const expanded = !faqItem.classList.contains('active');
+      
+      // Collapse all others for single-open UX
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          const btn = item.querySelector('.faq-question');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      faqItem.classList.toggle('active', expanded);
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  });
+}
+
+// Smooth scroll for anchor links (keeping for any remaining internal links)
+function initSmoothScroll() {
+  // Handle traditional anchor links if any exist
+  document.querySelectorAll("a[href^='#']").forEach(anchor => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href.length < 2) return;
+      
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const header = document.querySelector('.main-header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const rect = target.getBoundingClientRect();
+        const scrollTo = window.scrollY + rect.top - headerHeight + 2;
+        window.scrollTo({ top: scrollTo, behavior: "smooth" });
+      }
+    });
+  });
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, initializing all functionality...');
+  
+  // Initialize mobile menu
+  initMobileMenu();
+  
+  // Initialize FAQ if elements exist
+  if (document.querySelector('.faq-question')) {
+    initFAQ();
+  }
+  
+  // Initialize smooth scroll
+  initSmoothScroll();
+  
+  // Test menu after a short delay
+  setTimeout(() => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    console.log('Final check - Menu toggle found:', !!menuToggle);
+    console.log('Final check - Nav links found:', !!navLinks);
+    if (menuToggle && navLinks) {
+      console.log('Mobile menu setup complete and ready!');
+    } else {
+      console.error('Mobile menu elements still not found after initialization!');
+    }
+  }, 500);
+});

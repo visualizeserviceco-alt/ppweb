@@ -14,10 +14,13 @@ fetch('/Backend/header.html')
       lucide.createIcons();
     }
     
-    // Reinitialize mobile menu after header is loaded
-    if (window.initMobileMenu) {
-      window.initMobileMenu();
-    }
+    // Small delay to ensure icons are rendered before initializing menu
+    setTimeout(() => {
+      // Reinitialize mobile menu after header is loaded
+      if (window.initMobileMenu) {
+        window.initMobileMenu();
+      }
+    }, 100);
   })
   .catch(err => console.log('Header loading not available:', err));
 

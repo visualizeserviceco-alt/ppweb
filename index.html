@@ -120,7 +120,7 @@
   </main>
 
   <footer></footer>
-  <script src="Java/main-fixed.js"></script>
+  <script src="Java/main-fixed-new.js"></script>
   <script src="footer.js"></script>
 
   <script>
@@ -130,20 +130,24 @@
       .then(html => {
         document.getElementById('header-include').innerHTML = html;
         
-        // Initialize Lucide icons
+        // Initialize Lucide icons first
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
         }
+        
+        // Small delay to ensure icons are rendered before initializing menu
+        setTimeout(() => {
+          // Initialize mobile menu functionality
+          if (window.initMobileMenu) {
+            window.initMobileMenu();
+          }
+        }, 100);
         
         // Set active state for current page
         const homeLink = document.querySelector('a[href="/"]');
         if (homeLink && !homeLink.classList.contains('active')) {
           homeLink.classList.add('active');
           homeLink.setAttribute('aria-current', 'page');
-        }
-        // Initialize mobile menu functionality
-        if (window.initMobileMenu) {
-          window.initMobileMenu();
         }
       });
 

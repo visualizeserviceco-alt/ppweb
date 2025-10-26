@@ -157,7 +157,7 @@
   </main>
 
   <div id="footer-include"></div>
-  <script src="Java/main-fixed.js"></script>
+  <script src="Java/main-fixed-new.js"></script>
   <script>
     // Dynamically load the header
     fetch('Backend/header.html')
@@ -165,20 +165,24 @@
       .then(html => {
         document.getElementById('header-include').innerHTML = html;
         
-        // Initialize Lucide icons
+        // Initialize Lucide icons first
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
         }
+        
+        // Small delay to ensure icons are rendered before initializing menu
+        setTimeout(() => {
+          // Initialize mobile menu functionality
+          if (window.initMobileMenu) {
+            window.initMobileMenu();
+          }
+        }, 100);
         
         // Set active state for current page
         const termsLink = document.querySelector('a[href="/terms"]');
         if (termsLink && !termsLink.classList.contains('active')) {
           termsLink.classList.add('active');
           termsLink.setAttribute('aria-current', 'page');
-        }
-        // Initialize mobile menu functionality
-        if (window.initMobileMenu) {
-          window.initMobileMenu();
         }
       });
 
