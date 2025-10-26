@@ -101,32 +101,35 @@
   <div id="footer-include"></div>
   <script src="Java/main-fixed-new.js"></script>
   <script>
-    // Dynamically load the header
-    fetch('Backend/header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-include').innerHTML = html;
-        
-        // Initialize Lucide icons first
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons();
-        }
-        
-        // Small delay to ensure icons are rendered before initializing menu
-        setTimeout(() => {
-          // Initialize mobile menu functionality
-          if (window.initMobileMenu) {
-            window.initMobileMenu();
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dynamically load the header
+      fetch('Backend/header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-include').innerHTML = html;
+          
+          // Initialize Lucide icons first
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
           }
-        }, 100);
-        
-        // Set active state for current page
-        const bookingLink = document.querySelector('a[href="/booking"]');
-        if (bookingLink && !bookingLink.classList.contains('active')) {
-          bookingLink.classList.add('active');
-          bookingLink.setAttribute('aria-current', 'page');
-        }
-      });
+          
+          // Small delay to ensure icons are rendered before initializing menu
+          setTimeout(() => {
+            // Initialize mobile menu functionality
+            if (window.initMobileMenu) {
+              window.initMobileMenu();
+            }
+          }, 100);
+          
+          // Set active state for current page
+          const bookingLink = document.querySelector('a[href="/booking"]');
+          if (bookingLink && !bookingLink.classList.contains('active')) {
+            bookingLink.classList.add('active');
+            bookingLink.setAttribute('aria-current', 'page');
+          }
+        });
+    });
 
     // Dynamically load the footer
     fetch('Backend/footer.html')
