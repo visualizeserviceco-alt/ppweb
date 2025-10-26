@@ -1,191 +1,150 @@
-// MAIN.JS - Clean version
+// Mobile menu functionality for Paps Productions
+console.log('📱 Main.js loaded');
 
-// Mobile menu functionality
 function initMobileMenu() {
-  console.log('Initializing mobile menu...');
+  console.log('🚀 Initializing mobile menu...');
   
-  // Add a small delay to ensure DOM is fully rendered
+  // Wait for elements to be available
   setTimeout(() => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    console.log('Menu toggle element:', menuToggle);
-    console.log('Nav links element:', navLinks);
-    console.log('Menu toggle visible:', menuToggle ? window.getComputedStyle(menuToggle).display : 'N/A');
+    console.log('Menu toggle found:', !!menuToggle);
+    console.log('Nav links found:', !!navLinks);
     
     if (!menuToggle || !navLinks) {
-      console.error('Menu elements not found!');
-      console.log('Available elements:', {
-        allButtons: document.querySelectorAll('button'),
-        allMenuToggles: document.querySelectorAll('.menu-toggle'),
-        allNavLinks: document.querySelectorAll('.nav-links')
-      });
+      console.error('❌ Menu elements not found');
       return;
     }
-
-    // Hamburger/X icon animation
-    function updateMenuIcon() {
-      if (navLinks.classList.contains('active')) {
-        menuToggle.classList.add('open');
-        menuToggle.setAttribute('aria-label', 'Close navigation');
-      } else {
-        menuToggle.classList.remove('open');
-        menuToggle.setAttribute('aria-label', 'Open navigation');
+    
+    // Icon management
+    function updateMenuIcon(isOpen) {
+      const menuIcon = menuToggle.querySelector('[data-lucide="menu"]');
+      const closeIcon = menuToggle.querySelector('[data-lucide="x"]');
+      
+      if (menuIcon && closeIcon) {
+        if (isOpen) {
+          menuIcon.style.display = 'none';
+          closeIcon.style.display = 'block';
+        } else {
+          menuIcon.style.display = 'block';
+          closeIcon.style.display = 'none';
+        }
       }
+      
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
-
-    // Menu toggle click handler
-    menuToggle.addEventListener('click', (e) => {
+    
+    // Toggle function
+    function toggleMenu(e) {
       e.preventDefault();
-      console.log('Menu toggle clicked');
-      navLinks.classList.toggle('active');
+      e.stopPropagation();
+      
       const isActive = navLinks.classList.contains('active');
-      console.log('Menu is now:', isActive ? 'open' : 'closed');
-      menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      const willBeActive = !isActive;
       
-      // Handle body scroll locking
-      if (isActive) {
-        document.body.classList.add('menu-open');
-      } else {
+      navLinks.classList.toggle('active', willBeActive);
+      document.body.classList.toggle('menu-open', willBeActive);
+      
+      updateMenuIcon(willBeActive);
+      
+      console.log('Menu toggled:', willBeActive ? 'OPEN' : 'CLOSED');
+    }
+    
+    // Event listeners for mobile
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('touchend', toggleMenu);
+    
+    // Close menu when clicking nav links
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
         document.body.classList.remove('menu-open');
-      }
-      
-      updateMenuIcon();
+        updateMenuIcon(false);
+        console.log('Menu closed by navigation');
+      });
     });
-
-    // Keyboard accessibility
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-
+    
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (
-        navLinks.classList.contains('active') &&
-        !navLinks.contains(e.target) &&
-        !menuToggle.contains(e.target)
-      ) {
+      if (navLinks.classList.contains('active') && 
+          !navLinks.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
         navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        updateMenuIcon();
+        updateMenuIcon(false);
+        console.log('Menu closed by outside click');
       }
     });
-
-    // Close menu on ESC key
+    
+    // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        updateMenuIcon();
-        menuToggle.focus();
+        updateMenuIcon(false);
+        console.log('Menu closed by escape key');
       }
     });
-
-    // Close menu on window resize (desktop view)
-    const closeMenuOnResize = () => {
+    
+    // Close on window resize
+    window.addEventListener('resize', () => {
       if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        updateMenuIcon();
+        updateMenuIcon(false);
+        console.log('Menu closed by resize');
       }
-    };
-    window.addEventListener('resize', closeMenuOnResize);
-    window.addEventListener('orientationchange', closeMenuOnResize);
-
-    // Close menu when nav link is clicked (mobile)
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 900 && navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          document.body.classList.remove('menu-open');
-          updateMenuIcon();
-        }
-      });
     });
-
-    updateMenuIcon();
-    console.log('Mobile menu initialized successfully');
-  }, 100);
+    
+    // Initialize
+    updateMenuIcon(false);
+    console.log('✅ Mobile menu initialized successfully');
+    
+  }, 200);
 }
-
-// Make function globally available for dynamic loading
-window.initMobileMenu = initMobileMenu;
 
 // FAQ functionality
 function initFAQ() {
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const faqItem = button.parentElement;
-      const expanded = !faqItem.classList.contains('active');
-      
-      // Collapse all others for single-open UX
-      document.querySelectorAll('.faq-item').forEach(item => {
-        if (item !== faqItem) {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    if (question && answer) {
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+        
+        // Close other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
+            if (otherAnswer) otherAnswer.style.maxHeight = null;
+          }
+        });
+        
+        // Toggle current item
+        if (isOpen) {
           item.classList.remove('active');
-          const btn = item.querySelector('.faq-question');
-          if (btn) btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
         }
       });
-      
-      faqItem.classList.toggle('active', expanded);
-      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    });
-  });
-}
-
-// Smooth scroll for anchor links (keeping for any remaining internal links)
-function initSmoothScroll() {
-  // Handle traditional anchor links if any exist
-  document.querySelectorAll("a[href^='#']").forEach(anchor => {
-    anchor.addEventListener("click", (e) => {
-      const href = anchor.getAttribute("href");
-      if (!href || href.length < 2) return;
-      
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const header = document.querySelector('.main-header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const rect = target.getBoundingClientRect();
-        const scrollTo = window.scrollY + rect.top - headerHeight + 2;
-        window.scrollTo({ top: scrollTo, behavior: "smooth" });
-      }
-    });
-  });
-}
-
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing all functionality...');
-  
-  // Initialize mobile menu
-  initMobileMenu();
-  
-  // Initialize FAQ if elements exist
-  if (document.querySelector('.faq-question')) {
-    initFAQ();
-  }
-  
-  // Initialize smooth scroll
-  initSmoothScroll();
-  
-  // Test menu after a short delay
-  setTimeout(() => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    console.log('Final check - Menu toggle found:', !!menuToggle);
-    console.log('Final check - Nav links found:', !!navLinks);
-    if (menuToggle && navLinks) {
-      console.log('Mobile menu setup complete and ready!');
-    } else {
-      console.error('Mobile menu elements still not found after initialization!');
     }
-  }, 500);
+  });
+}
+
+// Auto-initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🔄 DOM ready - initializing...');
+  initFAQ();
+  initMobileMenu();
 });
+
+// Make globally available
+window.initMobileMenu = initMobileMenu;
+window.initFAQ = initFAQ;
