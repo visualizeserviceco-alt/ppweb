@@ -1,160 +1,211 @@
-// Mobile menu functionality for Paps Productions
-console.log('📱 Main.js loaded');
+// Advanced Mobile Menu for Paps Productions
+console.log("🚀 Loading advanced mobile menu...");
 
-function initMobileMenu() {
-  console.log('🚀 Initializing mobile menu...');
+// Global menu manager
+const MobileMenuManager = {
+  isOpen: false,
+  menuButton: null,
+  navMenu: null,
   
-  // Wait for elements to be available
-  setTimeout(() => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+  init() {
+    console.log("📱 Initializing mobile menu...");
+    this.findElements();
+    this.setupEvents();
+    this.setupIcon();
+  },
+  
+  findElements() {
+    // Multiple selectors for reliability
+    this.menuButton = document.querySelector(".menu-toggle") || 
+                     document.querySelector("button[aria-controls=\"main-menu\"]") ||
+                     document.querySelector("header button");
     
-    console.log('Menu toggle found:', !!menuToggle);
-    console.log('Nav links found:', !!navLinks);
+    this.navMenu = document.querySelector(".nav-links") ||
+                   document.querySelector("#main-menu") ||
+                   document.querySelector("header ul");
     
-    if (!menuToggle || !navLinks) {
-      console.error('❌ Menu elements not found');
-      return;
-    }
-    
-    // Icon management
-    function updateMenuIcon(isOpen) {
-      const menuIcon = menuToggle.querySelector('[data-lucide="menu"]');
-      const closeIcon = menuToggle.querySelector('[data-lucide="x"]');
-      
-      if (menuIcon && closeIcon) {
-        if (isOpen) {
-          menuIcon.style.display = 'none';
-          closeIcon.style.display = 'block';
-        } else {
-          menuIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
-        }
-      }
-      
-      menuToggle.classList.toggle('open', isOpen);
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-    
-    // Toggle function
-    function toggleMenu(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const isActive = navLinks.classList.contains('active');
-      const willBeActive = !isActive;
-      
-      navLinks.classList.toggle('active', willBeActive);
-      document.body.classList.toggle('menu-open', willBeActive);
-      
-      updateMenuIcon(willBeActive);
-      
-      console.log('Menu toggled:', willBeActive ? 'OPEN' : 'CLOSED');
-    }
-    
-    // Event listeners for mobile - Enhanced touch support
-    menuToggle.addEventListener('click', toggleMenu);
-    
-    // For mobile devices, use touchend to prevent click delays
-    menuToggle.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      toggleMenu(e);
+    console.log("Elements found:", {
+      button: !!this.menuButton,
+      menu: !!this.navMenu
     });
     
-    // Prevent touch events from interfering
-    menuToggle.addEventListener('touchstart', (e) => {
+    if (!this.menuButton || !this.navMenu) {
+      console.error("❌ Menu elements not found!");
+      setTimeout(() => this.findElements(), 100);
+      return false;
+    }
+    
+    return true;
+  },
+  
+  setupEvents() {
+    if (!this.menuButton || !this.navMenu) return;
+    
+    // Remove existing listeners
+    const newButton = this.menuButton.cloneNode(true);
+    this.menuButton.parentNode.replaceChild(newButton, this.menuButton);
+    this.menuButton = newButton;
+    
+    // Add click handler
+    this.menuButton.addEventListener("click", (e) => {
+      e.preventDefault();
       e.stopPropagation();
+      this.toggle();
+    });
+    
+    // Add touch handler for mobile
+    this.menuButton.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      this.toggle();
     });
     
     // Close menu when clicking nav links
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        updateMenuIcon(false);
-        console.log('Menu closed by navigation');
-      });
+    this.navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => this.close());
     });
     
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active') && 
-          !navLinks.contains(e.target) && 
-          !menuToggle.contains(e.target)) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        updateMenuIcon(false);
-        console.log('Menu closed by outside click');
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (this.isOpen && !this.navMenu.contains(e.target) && !this.menuButton.contains(e.target)) {
+        this.close();
       }
     });
     
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        updateMenuIcon(false);
-        console.log('Menu closed by escape key');
+    // Close on escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && this.isOpen) {
+        this.close();
       }
     });
     
-    // Close on window resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        updateMenuIcon(false);
-        console.log('Menu closed by resize');
+    // Close on resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900 && this.isOpen) {
+        this.close();
       }
     });
     
-    // Initialize
-    updateMenuIcon(false);
-    console.log('✅ Mobile menu initialized successfully');
+    console.log("✅ Events setup complete");
+  },
+  
+  setupIcon() {
+    if (!this.menuButton) return;
     
-  }, 200);
-}
+    const menuIcon = this.menuButton.querySelector("[data-lucide=\"menu\"]");
+    const closeIcon = this.menuButton.querySelector("[data-lucide=\"x\"]");
+    
+    if (menuIcon && closeIcon) {
+      menuIcon.style.display = "block";
+      closeIcon.style.display = "none";
+    }
+  },
+  
+  toggle() {
+    if (this.isOpen) {
+      this.close();
+    } else {
+      this.open();
+    }
+  },
+  
+  open() {
+    console.log("🟢 Opening menu");
+    this.isOpen = true;
+    
+    if (this.navMenu) {
+      this.navMenu.classList.add("active");
+    }
+    
+    document.body.classList.add("menu-open");
+    
+    this.updateIcon(true);
+  },
+  
+  close() {
+    console.log("🔴 Closing menu");
+    this.isOpen = false;
+    
+    if (this.navMenu) {
+      this.navMenu.classList.remove("active");
+    }
+    
+    document.body.classList.remove("menu-open");
+    
+    this.updateIcon(false);
+  },
+  
+  updateIcon(isOpen) {
+    if (!this.menuButton) return;
+    
+    const menuIcon = this.menuButton.querySelector("[data-lucide=\"menu\"]");
+    const closeIcon = this.menuButton.querySelector("[data-lucide=\"x\"]");
+    
+    if (menuIcon && closeIcon) {
+      if (isOpen) {
+        menuIcon.style.display = "none";
+        closeIcon.style.display = "block";
+      } else {
+        menuIcon.style.display = "block";
+        closeIcon.style.display = "none";
+      }
+    }
+    
+    this.menuButton.classList.toggle("open", isOpen);
+    this.menuButton.setAttribute("aria-expanded", isOpen.toString());
+  }
+};
 
 // FAQ functionality
 function initFAQ() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
+  document.querySelectorAll(".faq-item").forEach(item => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
     
     if (question && answer) {
-      question.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
+      question.addEventListener("click", () => {
+        const isOpen = item.classList.contains("active");
         
-        // Close other items
-        faqItems.forEach(otherItem => {
+        // Close others
+        document.querySelectorAll(".faq-item").forEach(otherItem => {
           if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            const otherAnswer = otherItem.querySelector('.faq-answer');
+            otherItem.classList.remove("active");
+            const otherAnswer = otherItem.querySelector(".faq-answer");
             if (otherAnswer) otherAnswer.style.maxHeight = null;
           }
         });
         
-        // Toggle current item
+        // Toggle current
         if (isOpen) {
-          item.classList.remove('active');
+          item.classList.remove("active");
           answer.style.maxHeight = null;
         } else {
-          item.classList.add('active');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
+          item.classList.add("active");
+          answer.style.maxHeight = answer.scrollHeight + "px";
         }
       });
     }
   });
 }
 
-// Auto-initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('🔄 DOM ready - initializing...');
+// Initialize when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    MobileMenuManager.init();
+    initFAQ();
+  });
+} else {
+  MobileMenuManager.init();
   initFAQ();
-  initMobileMenu();
-});
+}
 
-// Make globally available
-window.initMobileMenu = initMobileMenu;
+// Try again after a delay
+setTimeout(() => {
+  MobileMenuManager.init();
+}, 100);
+
+// Global access
+window.MobileMenuManager = MobileMenuManager;
+window.initMobileMenu = () => MobileMenuManager.init();
 window.initFAQ = initFAQ;
+
+console.log("📱 Advanced mobile menu loaded");
