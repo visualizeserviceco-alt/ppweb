@@ -52,9 +52,19 @@ function initMobileMenu() {
       console.log('Menu toggled:', willBeActive ? 'OPEN' : 'CLOSED');
     }
     
-    // Event listeners for mobile
+    // Event listeners for mobile - Enhanced touch support
     menuToggle.addEventListener('click', toggleMenu);
-    menuToggle.addEventListener('touchend', toggleMenu);
+    
+    // For mobile devices, use touchend to prevent click delays
+    menuToggle.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleMenu(e);
+    });
+    
+    // Prevent touch events from interfering
+    menuToggle.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+    });
     
     // Close menu when clicking nav links
     navLinks.querySelectorAll('a').forEach(link => {
