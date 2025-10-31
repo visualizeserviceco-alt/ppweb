@@ -11,7 +11,8 @@ body {
 .fadeInRight { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
 .animated { opacity: 1 !important; transform: none !important; }
 .booking-hero {
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   min-height: 48vh;
   background: linear-gradient(120deg, #192951 60%, #1b1b1c 100%);
   background-image: url('../Storage/Photos/IMG1.JPG');
@@ -25,6 +26,7 @@ body {
   text-align: center;
   padding: 7rem 1.5rem 4rem 1.5rem;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .booking-hero::before {
   content: '';
@@ -329,14 +331,16 @@ body {
 /* Pricing Section Styles */
 .pricing-booking-section {
   background: #1b1b1c;
-  padding: 4rem 0 4rem 0;
-  width: 100vw;
+  padding: 4rem 2rem;
+  width: 100%;
+  max-width: 100vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
+  overflow-x: hidden;
 }
 .pricing-title-wrapper {
   display: flex;
@@ -467,9 +471,44 @@ body {
 }
 
 /* Pricing Section Responsive Styles */
+/* Tablet breakpoint (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+  
+  .pricing-card {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pricing-title {
+    font-size: 1.8rem;
+    padding: 0.7rem 2rem;
+  }
+  
+  .booking-hero {
+    padding: 5rem 2rem 3rem 2rem;
+  }
+  
+  .booking-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .booking-hero p {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 900px) {
   .pricing-grid {
-    max-width: 98vw;
+    max-width: 98%;
     width: 100%;
     gap: 1.5rem;
     padding: 0 2vw;
@@ -492,6 +531,10 @@ body {
     font-size: 0.65rem;
     padding: 0.25rem 1.8rem;
     right: -22px;
+  }
+  
+  .pricing-booking-section {
+    padding: 3rem 1.5rem;
   }
 }
 @media (max-width: 768px) {

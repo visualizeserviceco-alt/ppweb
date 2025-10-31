@@ -92,7 +92,7 @@
         <article class="faq-item" role="listitem">
           <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-label">Can I book multiple cars in one session?</button>
           <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
-            <p>Yes! All bookings start with a meeting to discuss your project, starting there I can discuss how many cars, people, locations, time etc.</p>
+            <p>Yes! All bookings start with a meeting to discuss your project, starting there we can discuss how many cars, people, locations, time etc.</p>
           </div>
         </article>
         <article class="faq-item" role="listitem">
@@ -104,7 +104,7 @@
         <article class="faq-item" role="listitem">
           <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-label">How do I schedule my session?</button>
           <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-label">
-            <p>By clicking the Bookings button above, you can set up a meeting to further discuss your goals for your project and move forward from there.</p>
+            <p>By clicking the button below it will lead you to my scheduling page where we can set up a meeting to further discuss your goals for your project and move forward from there.</p>
           </div>
         </article>
         <article class="faq-item" role="listitem">
@@ -152,7 +152,7 @@
           }, 100);
           
           // Set active state for current page
-          const homeLink = document.querySelector('a[href="/"]');
+          const homeLink = document.querySelector('a[href="index.html"]') || document.querySelector('a[href="/"]');
           if (homeLink && !homeLink.classList.contains('active')) {
             homeLink.classList.add('active');
             homeLink.setAttribute('aria-current', 'page');

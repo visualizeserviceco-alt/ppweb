@@ -6,12 +6,15 @@
 
 /* Terms Hero Section */
 .terms-hero {
+  width: 100%;
+  max-width: 100vw;
   background: linear-gradient(135deg, #111 60%, #3a5aff 100%);
-  padding: 140px 20px 80px 20px;
+  padding: 140px 2rem 80px 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
   margin-top: 0;
+  box-sizing: border-box;
 }
 
 .terms-hero::before {
@@ -50,9 +53,13 @@
 
 /* Main Terms Content */
 .terms-content {
+  width: 100%;
+  max-width: 100vw;
   background: #111;
-  padding: 80px 20px 100px 20px;
+  padding: 80px 2rem 100px 2rem;
   min-height: calc(100vh - 300px);
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .terms-container {
@@ -215,8 +222,39 @@
   transform: translateY(0);
 }
 
+/* Tablet breakpoint (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .terms-hero {
+    padding: 120px 2rem 60px 2rem;
+  }
+  
+  .terms-hero h1 {
+    font-size: 3rem;
+  }
+  
+  .terms-hero p {
+    font-size: 1.15rem;
+  }
+  
+  .terms-content {
+    padding: 60px 2rem 80px 2rem;
+  }
+  
+  .terms-container {
+    padding: 50px 40px;
+  }
+  
+  .terms-section h2 {
+    font-size: 1.35rem;
+  }
+  
+  .terms-section li {
+    font-size: 1.05rem;
+  }
+}
+
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* Ensure content is always visible on mobile */
   .fadeInUp {
     opacity: 1 !important;
