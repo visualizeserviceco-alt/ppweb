@@ -53,11 +53,17 @@ const MobileMenuManager = {
       this.toggle();
     });
     
-    // Add touch handler for mobile
+    // Add touch handler for mobile - improved
+    this.menuButton.addEventListener("touchstart", (e) => {
+      // Prevent default to avoid click event duplication
+      e.stopPropagation();
+    }, { passive: true });
+    
     this.menuButton.addEventListener("touchend", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       this.toggle();
-    });
+    }, { passive: false });
     
     // Close menu when clicking nav links
     this.navMenu.querySelectorAll("a").forEach(link => {
@@ -155,36 +161,65 @@ const MobileMenuManager = {
   }
 };
 
-// FAQ functionality
+// FAQ functionality - Mobile optimized
 function initFAQ() {
   document.querySelectorAll(".faq-item").forEach(item => {
     const question = item.querySelector(".faq-question");
     const answer = item.querySelector(".faq-answer");
     
     if (question && answer) {
-      question.addEventListener("click", () => {
-        const isOpen = item.classList.contains("active");
-        
-        // Close others
-        document.querySelectorAll(".faq-item").forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove("active");
-            const otherAnswer = otherItem.querySelector(".faq-answer");
-            if (otherAnswer) otherAnswer.style.maxHeight = null;
-          }
-        });
-        
-        // Toggle current
-        if (isOpen) {
-          item.classList.remove("active");
-          answer.style.maxHeight = null;
-        } else {
-          item.classList.add("active");
-          answer.style.maxHeight = answer.scrollHeight + "px";
-        }
+      // Click handler for desktop
+      question.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFAQ(item, answer);
       });
+      
+      // Touch handler for mobile
+      question.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFAQ(item, answer);
+      }, { passive: false });
     }
   });
+  
+  function toggleFAQ(item, answer) {
+    const isOpen = item.classList.contains("active");
+    
+    // Close others
+    document.querySelectorAll(".faq-item").forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove("active");
+        const otherAnswer = otherItem.querySelector(".faq-answer");
+        if (otherAnswer) {
+          otherAnswer.style.maxHeight = null;
+          // Update aria-expanded
+          const otherQuestion = otherItem.querySelector(".faq-question");
+          if (otherQuestion) {
+            otherQuestion.setAttribute("aria-expanded", "false");
+          }
+        }
+      }
+    });
+    
+    // Toggle current
+    if (isOpen) {
+      item.classList.remove("active");
+      answer.style.maxHeight = null;
+      const question = item.querySelector(".faq-question");
+      if (question) {
+        question.setAttribute("aria-expanded", "false");
+      }
+    } else {
+      item.classList.add("active");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      const question = item.querySelector(".faq-question");
+      if (question) {
+        question.setAttribute("aria-expanded", "true");
+      }
+    }
+  }
 }
 
 // Initialize when DOM is ready

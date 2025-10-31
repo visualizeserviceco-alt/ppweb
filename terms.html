@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Terms & Conditions | Paps Productions</title>
   <meta name="description" content="Terms and conditions for photography sessions with Paps Productions. Read my policies on booking, cancellations, client conduct, and usage rights.">
   <link rel="icon" type="image/svg+xml" href="Storage/Logo.svg">
@@ -174,8 +178,10 @@
           
           // Small delay to ensure icons are rendered before initializing menu
           setTimeout(() => {
-            // Initialize mobile menu functionality
-            if (window.initMobileMenu) {
+            // Initialize mobile menu functionality with new system
+            if (window.MobileMenuManager) {
+              window.MobileMenuManager.init();
+            } else if (window.initMobileMenu) {
               window.initMobileMenu();
             }
           }, 100);

@@ -470,7 +470,16 @@ body {
 @media (max-width: 900px) {
   .pricing-grid {
     max-width: 98vw;
+    width: 100%;
     gap: 1.5rem;
+    padding: 0 2vw;
+    box-sizing: border-box;
+  }
+  
+  .pricing-card {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
   }
   .pricing-title {
     font-size: 1.4rem;

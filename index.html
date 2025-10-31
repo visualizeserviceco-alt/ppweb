@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Paps Productions | Automotive Photography Portfolio</title>
   <meta name="description" content="Cinematic automotive photography portfolio by Paps Productions. Explore immersive galleries, behind-the-scenes, and book your session.">
   <meta property="og:title" content="Paps Productions | Automotive Photography Portfolio">
@@ -21,7 +25,7 @@
       <div class="hero-content minimal">
         <h1 class="hero-title">Paps Productions</h1>
         <p class="hero-subtitle">
-          <i data-lucide="camera" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;"></i>
+          <i data-lucide="camera" class="camera-icon" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;"></i>
           Cinematic Automotive Photography
         </p>
       </div>
@@ -139,8 +143,10 @@
           
           // Small delay to ensure icons are rendered before initializing menu
           setTimeout(() => {
-            // Initialize mobile menu functionality
-            if (window.initMobileMenu) {
+            // Initialize mobile menu functionality with new system
+            if (window.MobileMenuManager) {
+              window.MobileMenuManager.init();
+            } else if (window.initMobileMenu) {
               window.initMobileMenu();
             }
           }, 100);
@@ -154,22 +160,63 @@
         });
     });
 
-    // Coming Soon Popup functionality
+    // Coming Soon Popup functionality - Mobile optimized
     function openComingSoonPopup() {
-      document.getElementById('comingSoonPopup').style.display = 'flex';
+      const popup = document.getElementById('comingSoonPopup');
+      if (!popup) return;
+      
+      popup.style.display = 'flex';
+      
+      // Prevent body scroll on mobile
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      document.body.style.top = `-${window.scrollY}px`;
+      
+      // Prevent background scroll on iOS
+      document.body.classList.add('popup-open');
+      
+      // Reinitialize icons after showing popup
+      if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 50);
+      }
     }
 
     function closeComingSoonPopup() {
-      document.getElementById('comingSoonPopup').style.display = 'none';
-      document.body.style.overflow = 'auto';
+      const popup = document.getElementById('comingSoonPopup');
+      if (!popup) return;
+      
+      popup.style.display = 'none';
+      
+      // Restore body scroll
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.style.top = '';
+      document.body.classList.remove('popup-open');
+      
+      // Restore scroll position
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
 
-    // Close popup when clicking outside
+    // Close popup when clicking outside (mobile optimized)
     window.addEventListener('click', function(event) {
       const popup = document.getElementById('comingSoonPopup');
-      if (event.target === popup) {
+      if (popup && event.target === popup) {
         closeComingSoonPopup();
+      }
+    });
+    
+    // Close popup on escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const popup = document.getElementById('comingSoonPopup');
+        if (popup && popup.style.display === 'flex') {
+          closeComingSoonPopup();
+        }
       }
     });
   </script>
