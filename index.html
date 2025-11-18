@@ -14,6 +14,7 @@
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="Storage/Logo.svg">
   <link rel="stylesheet" href="Styles/Style.css">
+  <!-- Typeform booking integrated (form ID: BumCiBtG). Popup iframe is lazy-loaded by the script at the bottom of this file. Original embed: <div data-tf-live="01KACFTDJCYQX6YRQ8AYJQ79FP"></div><script src="//embed.typeform.com/next/embed.js"></script> -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -86,7 +87,7 @@
         <article class="faq-item" role="listitem">
           <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-label">How long does a typical photo shoot last?</button>
           <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
-            <p>Although when booking it says the photo shoots are timed, I’m very workable and will go over that “time limit” if it means the best results for your project.</p>
+            <p>Although when booking it says the photo shoots are timed, I’m very flexable and will go over that “time limit” if it means the best results for your project.</p>
           </div>
         </article>
         <article class="faq-item" role="listitem">
@@ -160,23 +161,42 @@
         });
     });
 
-    // Coming Soon Popup functionality - Mobile optimized
+    // Booking popup functionality (now opens the Typeform in a modal iframe)
+    // Clicking any existing button that calls openComingSoonPopup() will open the Typeform.
+    const TYPEFORM_URL = 'https://form.typeform.com/to/BumCiBtG';
+
     function openComingSoonPopup() {
       const popup = document.getElementById('comingSoonPopup');
       if (!popup) return;
-      
+
+      // Lazy-create iframe if needed
+      let iframe = popup.querySelector('iframe');
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.setAttribute('title', 'Booking form');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'camera; microphone; autoplay; encrypted-media');
+        iframe.style.width = '100%';
+        iframe.style.height = '80vh';
+        iframe.style.border = '0';
+        // Append before the buttons container if present
+        const target = popup.querySelector('.popup-iframe-wrap') || popup.querySelector('.popup-content');
+        target.appendChild(iframe);
+      }
+
+      // Set src to load the form (do this here so it's lazy-loaded)
+      if (!iframe.src) iframe.src = TYPEFORM_URL;
+
       popup.style.display = 'flex';
-      
-      // Prevent body scroll on mobile
+
+      // Prevent body scroll while modal is open
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
       document.body.style.top = `-${window.scrollY}px`;
-      
-      // Prevent background scroll on iOS
       document.body.classList.add('popup-open');
-      
-      // Reinitialize icons after showing popup
+
+      // Reinitialize icons (close button) after showing popup
       if (typeof lucide !== 'undefined') {
         setTimeout(() => lucide.createIcons(), 50);
       }
@@ -185,9 +205,16 @@
     function closeComingSoonPopup() {
       const popup = document.getElementById('comingSoonPopup');
       if (!popup) return;
-      
+
       popup.style.display = 'none';
-      
+
+      // Stop the iframe to free resources
+      const iframe = popup.querySelector('iframe');
+      if (iframe) {
+        try { iframe.src = 'about:blank'; } catch (e) { /* ignore */ }
+        iframe.remove();
+      }
+
       // Restore body scroll
       const scrollY = document.body.style.top;
       document.body.style.position = '';
@@ -195,21 +222,21 @@
       document.body.style.overflow = '';
       document.body.style.top = '';
       document.body.classList.remove('popup-open');
-      
+
       // Restore scroll position
       if (scrollY) {
         window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
     }
 
-    // Close popup when clicking outside (mobile optimized)
+    // Close popup when clicking outside
     window.addEventListener('click', function(event) {
       const popup = document.getElementById('comingSoonPopup');
       if (popup && event.target === popup) {
         closeComingSoonPopup();
       }
     });
-    
+
     // Close popup on escape key
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
@@ -221,26 +248,19 @@
     });
   </script>
 
-  <!-- Coming Soon Popup -->
-  <div id="comingSoonPopup" class="popup-overlay">
+  <!-- Booking Popup (Typeform iframe) -->
+  <div id="comingSoonPopup" class="popup-overlay" aria-hidden="true" role="dialog" aria-label="Booking form popup">
     <div class="popup-content">
       <button class="popup-close" onclick="closeComingSoonPopup()" aria-label="Close popup">&times;</button>
-      <div class="popup-icon">
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#3a5aff"/>
-        </svg>
+
+      <!-- iframe container: iframe is lazy-created by JS -->
+      <div class="popup-iframe-wrap" style="width:100%; max-width:900px; margin:0 auto;">
+        <p style="text-align:center; padding:16px 12px; margin:0;">Loading booking form…</p>
       </div>
-      <h2>Coming Soon!</h2>
-      <p>I'm working on exciting improvements to make your booking experience even better.</p>
-      <p>In the meantime, reach out to me directly on Instagram to book your session!</p>
-      <div class="popup-buttons">
-        <a href="https://www.instagram.com/paps_productions/" target="_blank" rel="noopener" class="popup-btn primary">
-          <i data-lucide="instagram" style="width: 18px; height: 18px; margin-right: 8px;"></i>
-          Contact on Instagram
-        </a>
-        <button onclick="closeComingSoonPopup()" class="popup-btn secondary">
-          Close
-        </button>
+
+      <div style="text-align:center; margin-top:12px; font-size:14px; color:var(--muted,#666);">
+        <p style="margin:6px 0;">If the form doesn't load, you can open it in a new tab:</p>
+        <a href="https://form.typeform.com/to/BumCiBtG" target="_blank" rel="noopener" class="popup-btn primary">Open booking form</a>
       </div>
     </div>
   </div>
