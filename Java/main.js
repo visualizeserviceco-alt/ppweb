@@ -1,5 +1,10 @@
-// Advanced Mobile Menu for Paps Productions
-console.log("🚀 Loading advanced mobile menu...");
+/**
+ * Paps Productions — main.js
+ * Mobile menu (hamburger) and FAQ accordion.
+ */
+'use strict';
+
+console.log('🚀 Loading advanced mobile menu...');
 
 // Global menu manager
 const MobileMenuManager = {
@@ -8,7 +13,7 @@ const MobileMenuManager = {
   navMenu: null,
   
   init() {
-    console.log("📱 Initializing mobile menu...");
+    console.log('📱 Initializing mobile menu...');
     this.findElements();
     this.setupEvents();
     this.setupIcon();
@@ -24,13 +29,13 @@ const MobileMenuManager = {
                    document.querySelector("#main-menu") ||
                    document.querySelector("header ul");
     
-    console.log("Elements found:", {
+    console.log('Elements found:', {
       button: !!this.menuButton,
       menu: !!this.navMenu
     });
     
     if (!this.menuButton || !this.navMenu) {
-      console.error("❌ Menu elements not found!");
+      console.error('❌ Menu elements not found!');
       setTimeout(() => this.findElements(), 100);
       return false;
     }
@@ -91,7 +96,7 @@ const MobileMenuManager = {
       }
     });
     
-    console.log("✅ Events setup complete");
+    console.log('✅ Events setup complete');
   },
   
   setupIcon() {
@@ -115,7 +120,7 @@ const MobileMenuManager = {
   },
   
   open() {
-    console.log("🟢 Opening menu");
+    console.log('🟢 Opening menu');
     this.isOpen = true;
     
     if (this.navMenu) {
@@ -128,7 +133,7 @@ const MobileMenuManager = {
   },
   
   close() {
-    console.log("🔴 Closing menu");
+    console.log('🔴 Closing menu');
     this.isOpen = false;
     
     if (this.navMenu) {
@@ -243,4 +248,4 @@ window.MobileMenuManager = MobileMenuManager;
 window.initMobileMenu = () => MobileMenuManager.init();
 window.initFAQ = initFAQ;
 
-console.log("📱 Advanced mobile menu loaded");
+console.log('📱 Advanced mobile menu loaded');

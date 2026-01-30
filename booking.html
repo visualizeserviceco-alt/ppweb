@@ -12,11 +12,10 @@
   <link rel="icon" type="image/svg+xml" href="Storage/Logo.svg">
   <link rel="stylesheet" href="Styles/Style.css">
   <link rel="stylesheet" href="Styles/booking.css">
-  <!-- Typeform booking integrated (form ID: BumCiBtG). Popup iframe is lazy-loaded by the script at the bottom of this file. Original embed: <div data-tf-live="01KACFTDJCYQX6YRQ8AYJQ79FP"></div><script src="//embed.typeform.com/next/embed.js"></script> -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
   <div id="header-include"></div>
 
   <main id="main-content" tabindex="-1">
@@ -24,7 +23,7 @@
       <div class="booking-hero-content">
         <h1>Book Your Session with Paps Production</h1>
         <p>Let's bring your creative vision to life — professionally and precisely.</p>
-        <button class="book-now-btn" onclick="openComingSoonPopup()">Book Now</button>
+        <button type="button" class="book-now-btn" onclick="openComingSoonPopup()">Book Now</button>
       </div>
     </section>
 
@@ -90,9 +89,7 @@
       <h2>Book Your Session</h2>
       <p>I'm working on exciting improvements to make your booking experience even better! My new booking system will be available soon.</p>
       <div class="booking-form-button-wrapper">
-        <button class="btn book-now-btn" onclick="openComingSoonPopup()">
-          Book Now
-        </button>
+        <button type="button" class="btn book-now-btn" onclick="openComingSoonPopup()">Book Now</button>
       </div>
       <p class="booking-terms-note">By booking, you agree to my <a href="terms.html" class="terms-link">Terms & Conditions</a>.</p>
     </section>
@@ -104,6 +101,7 @@
   </main>
 
   <div id="footer-include"></div>
+
   <script src="Java/main.js"></script>
   <script>
     // Wait for DOM to be fully loaded
@@ -265,21 +263,19 @@
     });
   </script>
 
-  <!-- Booking Popup (Typeform iframe) -->
+  <!-- Booking popup (Typeform iframe, lazy-loaded by JS) -->
   <div id="comingSoonPopup" class="popup-overlay" aria-hidden="true" role="dialog" aria-label="Booking form popup">
     <div class="popup-content">
-      <button class="popup-close" onclick="closeComingSoonPopup()" aria-label="Close popup">&times;</button>
-
-      <!-- iframe container: iframe is lazy-created by JS -->
-      <div class="popup-iframe-wrap" style="width:100%; max-width:900px; margin:0 auto;">
-        <p style="text-align:center; padding:16px 12px; margin:0;">Loading booking form…</p>
+      <button type="button" class="popup-close" onclick="closeComingSoonPopup()" aria-label="Close popup">&times;</button>
+      <div class="popup-iframe-wrap">
+        <p class="popup-loading-text">Loading booking form…</p>
       </div>
-
-      <div style="text-align:center; margin-top:12px; font-size:14px; color:var(--muted,#666);">
-        <p style="margin:6px 0;">If the form doesn't load, you can open it in a new tab:</p>
+      <div class="popup-fallback">
+        <p>If the form doesn't load, you can open it in a new tab:</p>
         <a href="https://form.typeform.com/to/BumCiBtG" target="_blank" rel="noopener" class="popup-btn primary">Open booking form</a>
       </div>
     </div>
   </div>
+
 </body>
 </html>

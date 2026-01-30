@@ -1,5 +1,8 @@
-// Dynamically load the reusable footer component into every page
-(function() {
+/**
+ * Paps Productions — footer.js
+ * Loads Backend/footer.html into <footer> or #footer-include.
+ */
+(function () {
   'use strict';
   
   // Helper function to get the correct path
